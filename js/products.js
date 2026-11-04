@@ -1,6 +1,6 @@
 (() => {
   const products = [
-    { id: "vershkova", name: "Śmietankowa", originalName: "Вершкова", category: "Kiełbasa", color: "#E8B868", label: "assets/labels/sausage-butter-rect.webp", size: "product-card--large", description: "Poznaj Śmietankową — produkt marki „Дарницькі вироби”. Szczegóły produktu uzupełnimy po zatwierdzeniu danych." },
+    { id: "vershkova", name: "Śmietankowa", originalName: "Вершкова", category: "Kiełbasa", color: "#E8B868", label: "assets/labels/sausage-butter-rect.webp", image: "assets/products/vershkova.webp", size: "product-card--large", description: "Poznaj Śmietankową — produkt marki „Дарницькі вироби”. Szczegóły produktu uzupełnimy po zatwierdzeniu danych." },
     { id: "doktorska", name: "Doktorska", originalName: "Докторська", category: "Kiełbasa", color: "#E87888", label: "assets/labels/sausage-doctor-classic.webp", size: "product-card--wide", description: "Poznaj Doktorską — produkt marki „Дарницькі вироби”. Szczegóły produktu uzupełnimy po zatwierdzeniu danych." },
     { id: "studentska", name: "Studencka", originalName: "Студентська", category: "Kiełbasa", color: "#B63348", label: "assets/labels/sausage-student.webp", size: "product-card--tall", description: "Poznaj Studencką — produkt marki „Дарницькі вироби”. Szczegóły produktu uzupełnimy po zatwierdzeniu danych." },
     { id: "gota", name: "Gota", originalName: "Гота", category: "Kiełbasa", color: "#76518F", label: "assets/labels/sausage-gota.webp", size: "", description: "Poznaj Gotę — produkt marki „Дарницькі вироби”. Szczegóły produktu uzupełnimy po zatwierdzeniu danych." },
@@ -43,10 +43,11 @@
     }
     if (image) {
       image.replaceChildren();
+      image.classList.toggle("modal-image--photo", Boolean(product.image));
       image.style.setProperty("--product-color", product.color);
       const artwork = document.createElement("img");
-      artwork.src = product.label;
-    artwork.alt = `Oryginalna etykieta produktu ${product.name}`;
+      artwork.src = product.image || product.label;
+      artwork.alt = product.image ? `${product.originalName} — фото продукції` : `Oryginalna etykieta produktu ${product.name}`;
       artwork.loading = "lazy";
       image.append(artwork);
     }
@@ -65,7 +66,7 @@
   products.forEach((product, index) => {
     const card = document.createElement("button");
     card.type = "button";
-    card.className = `product-card ${product.size}`.trim();
+    card.className = `product-card ${product.size} ${product.image ? "product-card--photo" : ""}`.trim();
     card.dataset.productId = product.id;
     card.style.setProperty("--product-color", product.color);
     card.setAttribute("aria-haspopup", "dialog");
@@ -74,7 +75,7 @@
     picture.className = "product-card__image";
     picture.setAttribute("aria-hidden", "true");
     const artwork = document.createElement("img");
-    artwork.src = product.label;
+    artwork.src = product.image || product.label;
     artwork.alt = "";
     artwork.loading = index < 3 ? "eager" : "lazy";
     artwork.decoding = "async";
