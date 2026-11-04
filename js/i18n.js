@@ -112,6 +112,9 @@
   "WERSJA DEMONSTRACYJNA": "ДЕМОНСТРАЦІЙНА ВЕРСІЯ",
   "Oczekiwanie na potwierdzone lokalizacje": "Очікуємо на підтверджені адреси"
 };
+  translations["Modern Ukrainian Food Heritage"] = "Сучасна українська гастрономічна спадщина";
+  translations["DARNYTSKIE WYROBY / PL"] = "ДАРНИЦЬКІ ВИРОБИ / UA";
+  translations["SMACZNEJ DROGI"] = "СМАЧНОЇ ДОРОГИ";
   const attributes = {
   "Darnytskie Wyroby — strona główna": "Дарницькі вироби — головна сторінка",
   "Nawigacja główna": "Основна навігація",
@@ -165,7 +168,8 @@
       node.nodeValue = target === undefined || target === null ? original : original.replace(key, target);
       if (language === "uk" && /^Poznaj .+ — produkt marki/.test(key)) {
         const name = key.match(/^Poznaj (.+?) — produkt marki/)?.[1];
-        const ukName = translations[name] || name;
+        const productNames = { "Śmietankową": "Вершкова", "Doktorską": "Докторська", "Studencką": "Студентська", "Gotę": "Гота", "Doktorską Premium": "Докторська Преміум", "Doktorską Extra": "Докторська Екстра", "wędzone uszy wieprzowe": "Копчені свинячі вуха", "Parówki Doktorskie": "Сосиски Докторські" };
+        const ukName = productNames[name] || translations[name] || name;
         node.nodeValue = `Знайомтеся: ${ukName} — продукт бренду «Дарницькі вироби». Детальну інформацію додамо після підтвердження характеристик.`;
       }
     }
@@ -177,7 +181,12 @@
         if (!element.hasAttribute(name)) continue;
         if (!(name in originals)) originals[name] = element.getAttribute(name);
         const original = originals[name];
-        element.setAttribute(name, language === "uk" ? (attributes[original] || original) : original);
+        let value = language === "uk" ? (attributes[original] || original) : original;
+        if (language === "uk" && value === original) {
+          for (const [source, target] of Object.entries(translations).sort((a, b) => b[0].length - a[0].length)) value = value.replaceAll(source, target);
+          value = value.replaceAll("Oryginalna etykieta produktu", "Оригінальна етикетка продукту").replaceAll("Otwórz adres", "Відкрити адресу").replaceAll("w Google Maps", "у Google Maps");
+        }
+        element.setAttribute(name, value);
       }
     }
   };
