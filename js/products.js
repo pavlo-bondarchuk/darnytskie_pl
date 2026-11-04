@@ -57,6 +57,7 @@
     bodyOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     document.body.classList.add("dialog-open");
+    window.DarnytskieI18n?.translate(dialog);
     close?.focus();
   };
 
