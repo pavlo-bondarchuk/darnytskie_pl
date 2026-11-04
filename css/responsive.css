@@ -189,3 +189,7 @@ html[lang="uk"] .hero h1 span:nth-child(3) { padding-left: .02em; }
   html[lang="uk"] .hero__content { padding-top: 155px; }
   .site-header:has(.menu-toggle[aria-expanded="true"]) .language-switch { color: var(--color-paper); }
 }
+
+@media (max-width: 760px) {
+  .product-dialog .modal-image--photo img { width: 100%; height: 100%; max-height: none; object-fit: cover; }
+}
