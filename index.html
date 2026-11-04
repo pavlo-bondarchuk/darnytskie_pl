@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#810c2b">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Darńytskie Wyroby — ukraińskie smaki blisko Ciebie. Poznaj produkty i sprawdź, gdzie ich szukać.">
+  <meta property="og:title" content="Darnytskie Wyroby — Smak, który łączy">
+  <meta property="og:description" content="Ukraińskie smaki blisko Ciebie.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/lifestyle/hero.webp">
+  <title>Darnytskie Wyroby — Smak, który łączy</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script defer src="assets/vendor/lucide.min.js"></script>
+  <script defer src="assets/vendor/gsap.min.js"></script>
+  <script defer src="assets/vendor/ScrollTrigger.min.js"></script>
+  <script defer src="js/products.js"></script>
+  <script defer src="js/stores.js"></script>
+  <script defer src="js/main.js"></script>
+  <script defer src="js/animations.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Przejdź do treści</a>
+  <header class="site-header" id="site-header">
+    <a class="brand-lockup" href="#start" aria-label="Darnytskie Wyroby — strona główna">
+      <img src="assets/logo/logo.svg" alt="Darnytskie Wyroby" width="168" height="54">
+    </a>
+    <nav class="desktop-nav" aria-label="Nawigacja główna">
+      <a href="#produkty">Produkty</a>
+      <a href="#o-nas">O nas</a>
+      <a href="#gdzie-kupic">Gdzie kupić</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <a class="header-cta" href="#produkty"><span>Poznaj nasze smaki</span><i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Otwórz menu" aria-controls="mobile-menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </header>
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Nawigacja mobilna" inert>
+    <a href="#produkty"><span>01</span>Produkty<i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+    <a href="#o-nas"><span>02</span>O nas<i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+    <a href="#gdzie-kupic"><span>03</span>Gdzie kupić<i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+    <a href="#kontakt"><span>04</span>Kontakt<i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+    <p>Ukraińskie smaki blisko Ciebie.</p>
+  </nav>
+
+  <main id="main">
+    <section class="hero" id="start" aria-labelledby="hero-title">
+      <div class="hero__grain" aria-hidden="true"></div>
+      <div class="hero__image-wrap" aria-hidden="true"><img class="hero__image" src="assets/lifestyle/hero.webp" srcset="assets/lifestyle/hero-900.webp 900w, assets/lifestyle/hero.webp 1536w" sizes="(max-width: 760px) 100vw, 67vw" alt="" fetchpriority="high"></div>
+      <div class="hero__seal" aria-hidden="true"><span>UKRAIŃSKI<br>CHARAKTER</span><b>✳</b><span>POLSKA<br>BLISKOŚĆ</span></div>
+      <div class="hero__content">
+        <p class="eyebrow hero__eyebrow"><span></span>Modern Ukrainian Food Heritage</p>
+        <h1 id="hero-title"><span>Smak,</span><span>który</span><span>łączy<span class="hero__period">.</span></span></h1>
+        <div class="hero__bottom">
+          <p>Ukraińskie smaki<br>blisko Ciebie.</p>
+          <a class="round-link" href="#produkty" aria-label="Poznaj produkty"><i data-lucide="arrow-down-right" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <div class="hero__rail" aria-hidden="true"><span>01 / 07</span><span>SMACZNEJ DROGI</span></div>
+      <div class="hero__actions">
+        <a class="button button--cream" href="#produkty">Poznaj produkty <i data-lucide="arrow-down-right" aria-hidden="true"></i></a>
+        <a class="button button--outline" href="#gdzie-kupic">Gdzie kupić <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+      </div>
+      <a class="scroll-cue" href="#produkty"><span>Przewiń, by odkryć</span><i data-lucide="arrow-down" aria-hidden="true"></i></a>
+      <span class="hero__edition" aria-hidden="true">EST. UKRAINA · BLISKO CIEBIE</span>
+      <span class="hero__photo-note">WIZUALIZACJA KULINARNA · ZDJĘCIE ILUSTRACYJNE</span>
+    </section>
+
+    <section class="products section-pad" id="produkty" aria-labelledby="products-title">
+      <div class="section-heading products__heading">
+        <div><p class="eyebrow eyebrow--wine"><span></span>Nasza selekcja · 01</p><h2 id="products-title">Smak ma<br><em>wiele twarzy.</em></h2></div>
+        <p class="section-heading__note">Od dobrze znanych klasyków po smaki, które warto odkryć na nowo. Wybierz swój.</p>
+      </div>
+      <div class="product-intro-line"><span>NASZE PRODUKTY</span><span>PRZESUŃ KURSOR, ODKRYJ SMAK <i data-lucide="arrow-down-right" aria-hidden="true"></i></span></div>
+      <div class="product-grid" id="product-grid" aria-live="polite" aria-label="Produkty Darnytskie"></div>
+      <p class="products__note">Oryginalne projekty etykiet. Fotografie produktów w przygotowaniu.</p>
+      <div class="products__footer"><span>01 — 08</span><p>Każdy ma swój ulubiony.</p><a href="#gdzie-kupic">Znajdź blisko siebie <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></div>
+    </section>
+
+    <section class="about section-pad" id="o-nas" aria-labelledby="about-title">
+      <div class="about__index"><span>02</span><span>O NAS</span><span>—</span></div>
+      <div class="about__visual reveal-image">
+        <img src="assets/lifestyle/table.webp" alt="Ilustracyjna kompozycja kulinarna inspirowana ukraińskimi smakami" loading="lazy">
+        <span class="about__image-note">SMACZNE RZECZY MAJĄ SWOJĄ OPOWIEŚĆ</span>
+        <div class="about__sticker" aria-hidden="true"><span>z Ukrainy<br>z sercem</span><b>✳</b></div>
+      </div>
+      <div class="about__copy">
+        <p class="eyebrow eyebrow--gold"><span></span>Blisko tego, co znane</p>
+        <h2 id="about-title">Z Ukrainy.<br><em>Z sercem.</em></h2>
+        <p class="about__lead">Są smaki, które od razu przywołują dobre chwile. Darnytskie Wyroby to zaproszenie do ukraińskiej tradycji smaków — teraz bliżej Ciebie.</p>
+        <p class="about__body">Bez wielkich słów. Po prostu rzeczy, które dobrze smakują, najlepiej dzielone przy wspólnym stole.</p>
+        <a class="text-link text-link--light" href="#produkty">Poznaj nasze produkty <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+      </div>
+      <div class="about__signature" aria-hidden="true">SMACZNEJ DROGI</div>
+    </section>
+
+    <section class="values section-pad" aria-labelledby="values-title">
+      <div class="values__top"><p class="eyebrow eyebrow--wine"><span></span>To, co łączy</p><p>03 / NASZA IDEA</p></div>
+      <h2 id="values-title" class="sr-only">Smak, jakość i tradycja</h2>
+      <div class="values__composition">
+        <div class="values__word values__word--smak"><span class="values__number">01</span><span class="values__letter">S</span><div><h3>Smak</h3><p>Znajomy. Szczery.<br>Do podania dalej.</p></div><span class="values__asterisk">✳</span></div>
+        <div class="values__photo reveal-image"><img src="assets/lifestyle/table.webp" alt="Zbliżenie na starannie przygotowane składniki i dodatki" loading="lazy"><span>RAZEM SMAKUJE LEPIEJ</span></div>
+        <div class="values__word values__word--jakosc"><span class="values__number">02</span><h3>Jakość</h3><p>Wybieramy to, co<br>naprawdę dobre.</p><span class="values__line"></span></div>
+        <div class="values__word values__word--tradycja"><span class="values__number">03</span><h3>Tradycja</h3><p>Smaki, które<br>niosą wspomnienia.</p><span class="values__circle">Д<br>W</span></div>
+      </div>
+      <p class="values__caption">SMAK <span>·</span> JAKOŚĆ <span>·</span> TRADYCJA</p>
+    </section>
+
+    <section class="table section-pad" aria-labelledby="table-title">
+      <div class="table__header"><p class="eyebrow eyebrow--wine"><span></span>Przy wspólnym stole · 04</p><p class="table__small">NA CO DZIEŃ<br>I OD ŚWIĘTA</p></div>
+      <div class="table__title-row"><h2 id="table-title">Smaki, które<br><em>kochasz.</em></h2><p>Prosto, po swojemu, razem.<br>Bo najlepsze chwile<br>zaczynają się od „siadaj”.</p></div>
+      <div class="table__gallery">
+        <figure class="gallery-shot gallery-shot--one reveal-image"><img src="assets/lifestyle/table.webp" alt="Ilustracyjny kadr wspólnego stołu" loading="lazy"><figcaption><span>01</span>Na dobry początek</figcaption></figure>
+        <figure class="gallery-shot gallery-shot--two reveal-image"><img src="assets/lifestyle/hero.webp" alt="Kulinarny detal ze świeżymi ziołami" loading="lazy"><figcaption><span>02</span>Trochę świeżości</figcaption></figure>
+        <figure class="gallery-shot gallery-shot--three reveal-image"><img src="assets/lifestyle/table.webp" alt="Ilustracyjna kompozycja do wspólnego posiłku" loading="lazy"><figcaption><span>03</span>W swoim gronie</figcaption></figure>
+        <div class="table__quote"><span>„</span><p>Smak, który<br>łączy.</p><small>SMACZNEJ DROGI</small></div>
+      </div>
+      <p class="visual-note">KADRY ILUSTRACYJNE</p>
+    </section>
+
+    <section class="locator section-pad" id="gdzie-kupic" aria-labelledby="locator-title">
+      <div class="locator__lead"><p class="eyebrow eyebrow--gold"><span></span>Blisko Ciebie · 05</p><h2 id="locator-title">Znajdź nas<br><em>blisko siebie.</em></h2><p>Sprawdź dostępność naszych produktów w swojej okolicy. Lista lokalizacji pojawi się po dodaniu potwierdzonych punktów.</p></div>
+      <div class="locator__panel">
+        <label class="search-label" for="store-search">WPISZ NAZWĘ MIASTA</label>
+        <div class="store-search-wrap"><i data-lucide="search" aria-hidden="true"></i><input id="store-search" type="search" placeholder="np. Warszawa" autocomplete="off" aria-controls="store-results"><button id="store-search-clear" type="button" aria-label="Wyczyść wyszukiwanie" hidden><i data-lucide="x" aria-hidden="true"></i></button></div>
+        <div class="locator__status"><span class="status-dot"></span><span id="store-results" role="status" aria-live="polite">Lista punktów sprzedaży zostanie uzupełniona.</span></div>
+        <div class="locator__map" id="store-map" role="img" aria-label="Mapa demonstracyjna; brak potwierdzonych adresów sklepów">
+          <div class="map-grid" aria-hidden="true"></div><svg class="map-lines" viewBox="0 0 600 330" preserveAspectRatio="none" aria-hidden="true"><path d="M-25 54 C110 88 135 18 242 61S382 118 632 38M-20 228 C93 178 201 270 295 212S482 175 623 274M120 -18 C138 79 179 104 156 172s-19 88 34 186M393-16c-28 66-27 104 24 142s33 89 5 218M-12 147c128 19 175-39 303-9s184 11 326-34"/><path class="map-road" d="M43 343 294-15M238 350 617 24M-9 110 608 236M-20 295 498-12"/></svg>
+          <span class="map-label map-label--a">TWOJA OKOLICA</span><span class="map-label map-label--b">MAPA DEMONSTRACYJNA</span><span class="map-compass">N<br>↑</span><span class="map-empty">01 / 00<br><b>Oczekiwanie na<br>potwierdzone lokalizacje</b></span>
+        </div>
+        <p class="locator__fine">Lokalizacje pojawią się po wprowadzeniu i potwierdzeniu danych. Mapa ma charakter demonstracyjny.</p>
+      </div>
+    </section>
+
+    <section class="contact section-pad" id="kontakt" aria-labelledby="contact-title">
+      <div class="contact__top"><p class="eyebrow eyebrow--wine"><span></span>Porozmawiajmy · 06</p><span>DARNYTSKIE WYROBY / PL</span></div>
+      <div class="contact__main"><div><h2 id="contact-title">Smak zaczyna<br><em>się od rozmowy.</em></h2><p>Chcesz wiedzieć więcej o marce lub współpracy? Odezwij się.</p></div><div class="contact__circle" aria-label="Dane kontaktowe w przygotowaniu"><span>DANE W PRZYGOTOWANIU</span><i data-lucide="arrow-up-right" aria-hidden="true"></i></div></div>
+      <div class="contact__details"><div><span>EMAIL</span><p>Adres w przygotowaniu</p></div><div><span>MEDIA SPOŁECZNOŚCIOWE</span><p>Linki w przygotowaniu</p></div><div><span>DANE FIRMY</span><p>W przygotowaniu</p></div></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="footer-brand" href="#start"><img src="assets/logo/logo.svg" alt="Darnytskie Wyroby" width="136" height="44"></a>
+    <p>Smak, który łączy.<br><span>Ukraińskie smaki blisko Ciebie.</span></p>
+    <nav aria-label="Nawigacja w stopce"><a href="#produkty">Produkty</a><a href="#o-nas">O nas</a><a href="#gdzie-kupic">Gdzie kupić</a><a href="#kontakt">Kontakt</a></nav>
+    <span class="footer-copy">© 2026 DARNYTSKIE WYROBY <span>PROJEKT DEMONSTRACYJNY</span></span>
+    <a class="back-top" href="#start" aria-label="Wróć na górę"><i data-lucide="arrow-up" aria-hidden="true"></i></a>
+  </footer>
+
+  <dialog class="product-dialog" id="product-dialog" aria-labelledby="modal-name">
+    <button class="modal-close" id="modal-close" type="button" aria-label="Zamknij szczegóły produktu"><i data-lucide="x" aria-hidden="true"></i></button>
+    <div class="modal-image"></div>
+    <div class="modal-content"><p class="eyebrow eyebrow--wine"><span></span><span id="modal-category"></span></p><h2 id="modal-name"></h2><p id="modal-description"></p><div id="modal-specs"></div><a class="button button--wine modal-buy" href="#gdzie-kupic">Gdzie kupić <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></div>
+  </dialog>
+
+  <script>document.documentElement.classList.add('js');</script>
+</body>
+</html>

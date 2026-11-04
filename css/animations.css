@@ -1,0 +1,25 @@
+.hero__image-wrap { animation: hero-image-in 1.15s cubic-bezier(.16,.7,.2,1) both; }
+.hero__image { animation: hero-image-settle 1.4s cubic-bezier(.16,.7,.2,1) both; }
+.hero__grain { animation: grain-shift 17s steps(7) infinite; }
+
+@keyframes hero-image-in {
+  from { clip-path: inset(0 0 0 100%); }
+  to { clip-path: inset(0); }
+}
+
+@keyframes hero-image-settle {
+  from { transform: scale(1.07); }
+  to { transform: scale(1); }
+}
+
+@keyframes grain-shift {
+  0%,100% { transform: translate(0,0); }
+  20% { transform: translate(-1%,1%); }
+  40% { transform: translate(1%,-1%); }
+  60% { transform: translate(1%,1%); }
+  80% { transform: translate(-1%,-1%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__image-wrap, .hero__image, .hero__grain { animation: none; }
+}
