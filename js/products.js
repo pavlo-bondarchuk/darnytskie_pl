@@ -32,9 +32,10 @@
     const description = dialog.querySelector("#modal-description");
     const specs = dialog.querySelector("#modal-specs");
     const close = dialog.querySelector("#modal-close");
-    if (name) name.textContent = product.name;
+    const isUk = window.DarnytskieI18n?.getLanguage() === "uk";
+    if (name) name.textContent = isUk ? product.originalName : product.name;
     if (category) category.textContent = product.category;
-    if (description) description.textContent = product.description;
+    if (description) description.textContent = isUk ? `Знайомтеся: ${product.originalName} — продукт бренду «Дарницькі вироби». Детальну інформацію додамо після підтвердження характеристик.` : product.description;
     if (specs) {
       const placeholder = document.createElement("span");
       placeholder.textContent = "Szczegóły produktu w przygotowaniu";
