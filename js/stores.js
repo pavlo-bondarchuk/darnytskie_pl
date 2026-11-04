@@ -67,5 +67,9 @@
   };
 
   input?.addEventListener("input", () => render(input.value));
+  document.addEventListener("darnytskie:languagechange", () => {
+    render(input?.value || "");
+    queueMicrotask(() => window.DarnytskieI18n?.translate(map));
+  });
   render("");
 })();
