@@ -177,3 +177,15 @@
   .language-switch button { min-width: 38px; min-height: 44px; padding: 8px 1px; }
   .site-header:has(.mobile-menu.is-open) .language-switch { color: var(--color-paper); }
 }
+
+html[lang="uk"] .hero h1 { font-size: clamp(72px, 9vw, 145px); }
+html[lang="uk"] .hero h1 span:nth-child(2) { padding-left: .35em; }
+html[lang="uk"] .hero h1 span:nth-child(3) { padding-left: .02em; }
+@media (min-width: 761px) and (max-width: 1200px) {
+  .header-cta { display: none; }
+}
+@media (max-width: 760px) {
+  html[lang="uk"] .hero h1 { font-size: clamp(48px, 11.7vw, 89px); line-height: .96; }
+  html[lang="uk"] .hero__content { padding-top: 155px; }
+  .site-header:has(.menu-toggle[aria-expanded="true"]) .language-switch { color: var(--color-paper); }
+}
