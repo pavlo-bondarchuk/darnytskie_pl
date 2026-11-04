@@ -26,7 +26,7 @@
       menu.inert = false;
       menu.removeAttribute("inert");
       toggle.setAttribute("aria-expanded", "true");
-      toggle.setAttribute("aria-label", "Zamknij menu");
+      toggle.setAttribute("aria-label", window.DarnytskieI18n?.getLanguage() === "uk" ? "Закрити меню" : "Zamknij menu");
       menu.classList.add("is-open");
       requestAnimationFrame(() => menu.querySelector("a")?.focus());
     } else {
@@ -35,7 +35,7 @@
       menu.inert = true;
       menu.setAttribute("inert", "");
       toggle.setAttribute("aria-expanded", "false");
-      toggle.setAttribute("aria-label", "Otwórz menu");
+      toggle.setAttribute("aria-label", window.DarnytskieI18n?.getLanguage() === "uk" ? "Відкрити меню" : "Otwórz menu");
       if (restoreFocus && menuReturnFocus?.isConnected) menuReturnFocus.focus({ preventScroll: true });
       menuReturnFocus = null;
     }
