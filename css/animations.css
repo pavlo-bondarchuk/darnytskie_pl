@@ -1,6 +1,6 @@
 .hero__image-wrap { animation: hero-image-in 1.15s cubic-bezier(.16,.7,.2,1) both; }
 .hero__image { animation: hero-image-settle 1.4s cubic-bezier(.16,.7,.2,1) both; }
-.hero__grain { animation: grain-shift 17s steps(7) infinite; }
+.hero__grain { animation: none; }
 
 @keyframes hero-image-in {
   from { clip-path: inset(0 0 0 100%); }

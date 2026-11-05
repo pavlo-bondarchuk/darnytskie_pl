@@ -5,10 +5,12 @@
   const results = document.querySelector("#store-results");
   const map = document.querySelector("#store-map");
   if (!results || !map) return;
+  let accessibleMapLabel = "";
 
   const normalize = value => value.toLocaleLowerCase("pl-PL").replace(/ł/g, "l").normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+  const localize = (polish, ukrainian) => window.DarnytskieI18n?.getLanguage() === "uk" ? ukrainian : polish;
 
-  const updateMapState = (title, detail) => {
+  const updateMapState = (title, detail, accessibleLabel) => {
     const empty = map.querySelector(".map-empty");
     if (empty) {
       empty.replaceChildren();
@@ -19,7 +21,8 @@
       message.textContent = detail;
       empty.append(count, lineBreak, message);
     }
-    map.setAttribute("aria-label", detail);
+    accessibleMapLabel = accessibleLabel;
+    map.setAttribute("aria-label", accessibleMapLabel);
   };
 
   const render = query => {
@@ -34,7 +37,7 @@
         const item = document.createElement("div");
         item.className = "store-result";
         const title = document.createElement("strong");
-        title.textContent = store.name || store.city || "Punkt sprzedaży";
+        title.textContent = store.name || store.city || localize("Punkt sprzedaży", "Точка продажу");
         item.append(title);
         if (store.address) {
           const address = document.createElement("p");
@@ -46,30 +49,38 @@
           link.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(store.address)}`;
           link.target = "_blank";
           link.rel = "noopener noreferrer";
-          link.textContent = "Otwórz w Google Maps";
-          link.setAttribute("aria-label", `Otwórz adres ${store.address} w Google Maps`);
+          link.textContent = localize("Otwórz w Google Maps", "Відкрити в Google Maps");
+          link.setAttribute("aria-label", localize(`Otwórz adres ${store.address} w Google Maps`, `Відкрити адресу ${store.address} у Google Maps`));
           item.append(link);
         }
         results.append(item);
       });
-      updateMapState("POTWIERDZONE PUNKTY", "Lokalizacje z listy");
+      updateMapState(
+        localize("POTWIERDZONE PUNKTY", "ПІДТВЕРДЖЕНІ ТОЧКИ"),
+        localize("Lokalizacje z listy", "Адреси зі списку"),
+        localize("Mapa: potwierdzone punkty sprzedaży", "Карта: підтверджені точки продажу")
+      );
       return;
     }
 
     const message = document.createElement("p");
     message.textContent = window.STORES.length
-      ? "Nie znaleźliśmy punktu dla tego miasta. Sprawdź pisownię lub spróbuj innej nazwy."
+      ? localize("Nie znaleźliśmy punktu dla tego miasta. Sprawdź pisownię lub spróbuj innej nazwy.", "Ми не знайшли магазину в цьому місті. Перевірте написання або введіть іншу назву.")
       : needle
-        ? `Brak potwierdzonych lokalizacji dla miasta „${query.trim()}”. Lista punktów jest w przygotowaniu.`
-        : "Wersja demonstracyjna. Lista punktów sprzedaży jest w przygotowaniu; nie mamy jeszcze potwierdzonych adresów.";
+        ? localize(`Brak potwierdzonych lokalizacji dla miasta „${query.trim()}”. Lista punktów jest w przygotowaniu.`, `У місті «${query.trim()}» поки немає підтверджених адрес. Список магазинів готується.`)
+        : localize("Wersja demonstracyjna. Lista punktów sprzedaży jest w przygotowaniu; nie mamy jeszcze potwierdzonych adresów.", "Демонстраційна версія. Список магазинів готується; підтверджених адрес поки немає.");
     results.append(message);
-    updateMapState(needle ? "BRAK POTWIERDZONEGO PUNKTU" : "WERSJA DEMONSTRACYJNA", needle ? `Brak danych dla: ${query.trim()}` : "Oczekiwanie na potwierdzone lokalizacje");
+    updateMapState(
+      needle ? localize("BRAK POTWIERDZONEGO PUNKTU", "НЕМАЄ ПІДТВЕРДЖЕНИХ ТОЧОК") : localize("WERSJA DEMONSTRACYJNA", "ДЕМОНСТРАЦІЙНА ВЕРСІЯ"),
+      needle ? localize(`Brak danych dla: ${query.trim()}`, `Немає даних для міста: ${query.trim()}`) : localize("Oczekiwanie na potwierdzone lokalizacje", "Очікуємо на підтверджені адреси"),
+      needle ? localize(`Mapa: brak potwierdzonych punktów dla ${query.trim()}`, `Карта: немає підтверджених точок у місті ${query.trim()}`) : localize("Mapa demonstracyjna; brak potwierdzonych adresów sklepów", "Демонстраційна карта; підтверджених адрес магазинів поки немає")
+    );
   };
 
   input?.addEventListener("input", () => render(input.value));
   document.addEventListener("darnytskie:languagechange", () => {
     render(input?.value || "");
-    queueMicrotask(() => window.DarnytskieI18n?.translate(map));
+    queueMicrotask(() => map.setAttribute("aria-label", accessibleMapLabel));
   });
   render("");
 })();

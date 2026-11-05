@@ -32,10 +32,9 @@
     const description = dialog.querySelector("#modal-description");
     const specs = dialog.querySelector("#modal-specs");
     const close = dialog.querySelector("#modal-close");
-    const isUk = window.DarnytskieI18n?.getLanguage() === "uk";
-    if (name) name.textContent = isUk ? product.originalName : product.name;
+    if (name) name.textContent = product.name;
     if (category) category.textContent = product.category;
-    if (description) description.textContent = isUk ? `Знайомтеся: ${product.originalName} — продукт бренду «Дарницькі вироби». Детальну інформацію додамо після підтвердження характеристик.` : product.description;
+    if (description) description.textContent = product.description;
     if (specs) {
       const placeholder = document.createElement("span");
       placeholder.textContent = "Szczegóły produktu w przygotowaniu";
@@ -47,7 +46,7 @@
       image.style.setProperty("--product-color", product.color);
       const artwork = document.createElement("img");
       artwork.src = product.image || product.label;
-      artwork.alt = product.image ? `${product.originalName} — фото продукції` : `Oryginalna etykieta produktu ${product.name}`;
+      artwork.alt = product.image ? `Zdjęcie produktu ${product.name}` : `Oryginalna etykieta produktu ${product.name}`;
       artwork.loading = "lazy";
       image.append(artwork);
     }
@@ -104,11 +103,17 @@
     dialog.addEventListener("close", () => {
       document.body.classList.remove("dialog-open");
       document.body.style.overflow = bodyOverflow;
-      dialog._returnFocus?.focus();
+      const focusTarget = dialog._focusAfterClose || dialog._returnFocus;
+      dialog._focusAfterClose = null;
       dialog._returnFocus = null;
+      requestAnimationFrame(() => focusTarget?.focus({ preventScroll: true }));
     });
     dialog.addEventListener("click", event => {
-      if (event.target.closest(".modal-buy")) dialog.close();
+      if (!event.target.closest(".modal-buy")) return;
+      dialog._focusAfterClose = document.querySelector("#gdzie-kupic");
+      if (dialog._focusAfterClose) dialog._focusAfterClose.tabIndex = -1;
+      dialog._returnFocus = null;
+      dialog.close();
     });
   }
 })();

@@ -2,81 +2,95 @@
   const header = document.querySelector("#site-header");
   const toggle = document.querySelector("#menu-toggle");
   const menu = document.querySelector("#mobile-menu");
+  const menuClose = document.querySelector("#menu-close");
   const search = document.querySelector("#store-search");
   const clearSearch = document.querySelector("#store-search-clear");
-  const mobileQuery = window.matchMedia("(max-width: 760px)");
+  const mobileQuery = window.matchMedia("(max-width: 68.75rem)");
   let menuReturnFocus = null;
+  let menuFocusTarget = null;
   let savedOverflow = "";
 
   const refreshIcons = () => {
     if (window.lucide?.createIcons) window.lucide.createIcons();
   };
+  const localized = (polish, ukrainian) => window.DarnytskieI18n?.getLanguage() === "uk" ? ukrainian : polish;
 
   const setHeaderState = () => header?.classList.toggle("is-scrolled", window.scrollY > 28);
   setHeaderState();
   window.addEventListener("scroll", setHeaderState, { passive: true });
 
-  const setMenuOpen = (open, restoreFocus = true) => {
-    if (!toggle || !menu) return;
-    if (open && !mobileQuery.matches) return;
-    if (open) {
-      menuReturnFocus = document.activeElement;
-      savedOverflow = document.body.style.overflow;
-      document.body.style.overflow = "hidden";
-      menu.inert = false;
-      menu.removeAttribute("inert");
-      toggle.setAttribute("aria-expanded", "true");
-      toggle.setAttribute("aria-label", window.DarnytskieI18n?.getLanguage() === "uk" ? "Закрити меню" : "Zamknij menu");
-      menu.classList.add("is-open");
-      requestAnimationFrame(() => menu.querySelector("a")?.focus());
+  const updateHeaderOffset = () => {
+    if (!header) return;
+    const height = Math.ceil(header.getBoundingClientRect().height);
+    document.documentElement.style.setProperty("--header-offset", `${height}px`);
+  };
+  if (header) {
+    updateHeaderOffset();
+    if ("ResizeObserver" in window) {
+      const headerResizeObserver = new ResizeObserver(updateHeaderOffset);
+      headerResizeObserver.observe(header);
     } else {
-      document.body.style.overflow = savedOverflow;
-      menu.classList.remove("is-open");
-      menu.inert = true;
-      menu.setAttribute("inert", "");
-      toggle.setAttribute("aria-expanded", "false");
-      toggle.setAttribute("aria-label", window.DarnytskieI18n?.getLanguage() === "uk" ? "Відкрити меню" : "Otwórz menu");
-      if (restoreFocus && menuReturnFocus?.isConnected) menuReturnFocus.focus({ preventScroll: true });
-      menuReturnFocus = null;
+      window.addEventListener("resize", updateHeaderOffset, { passive: true });
     }
+  }
+
+  const openMenu = () => {
+    if (!toggle || !menu || !mobileQuery.matches || menu.open) return;
+    menuReturnFocus = document.activeElement;
+    menuFocusTarget = null;
+    savedOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.body.classList.add("menu-open");
+    menu.classList.add("is-open");
+    toggle.setAttribute("aria-expanded", "true");
+    toggle.setAttribute("aria-label", localized("Zamknij menu", "Закрити меню"));
+    menu.showModal();
+    requestAnimationFrame(() => menuClose?.focus());
   };
 
-  toggle?.addEventListener("click", () => setMenuOpen(toggle.getAttribute("aria-expanded") !== "true"));
-  menu?.querySelectorAll('a[href^="#"]').forEach(link => link.addEventListener("click", () => {
-    setMenuOpen(false, false);
-    const target = document.querySelector(link.hash);
-    if (target) {
-      target.tabIndex = -1;
-      requestAnimationFrame(() => target.focus({ preventScroll: true }));
-    }
+  const closeMenu = focusTarget => {
+    if (!menu?.open) return;
+    menuFocusTarget = focusTarget || null;
+    menu.close();
+  };
+
+  toggle?.addEventListener("click", () => {
+    if (menu?.open) closeMenu();
+    else openMenu();
+  });
+  menuClose?.addEventListener("click", () => closeMenu());
+  menu?.querySelectorAll('.mobile-menu__nav a[href^="#"]').forEach(link => link.addEventListener("click", () => {
+    const target = document.getElementById(decodeURIComponent(link.hash.slice(1)));
+    if (target) target.tabIndex = -1;
+    closeMenu(target);
   }));
+  menu?.addEventListener("close", () => {
+    document.body.style.overflow = savedOverflow;
+    document.body.classList.remove("menu-open");
+    menu.classList.remove("is-open");
+    toggle?.setAttribute("aria-expanded", "false");
+    toggle?.setAttribute("aria-label", localized("Otwórz menu", "Відкрити меню"));
+    const focusTarget = menuFocusTarget || menuReturnFocus;
+    menuFocusTarget = null;
+    menuReturnFocus = null;
+    requestAnimationFrame(() => focusTarget?.focus({ preventScroll: true }));
+  });
   mobileQuery.addEventListener?.("change", event => {
-    if (!event.matches && toggle?.getAttribute("aria-expanded") === "true") setMenuOpen(false);
+    if (!event.matches && menu?.open) closeMenu();
+  });
+  document.addEventListener("darnytskie:languagechange", () => {
+    requestAnimationFrame(() => window.ScrollTrigger?.refresh());
   });
 
-  document.addEventListener("keydown", event => {
-    if (event.key === "Escape" && toggle?.getAttribute("aria-expanded") === "true") {
-      event.preventDefault();
-      setMenuOpen(false);
-      return;
-    }
-    if (event.key !== "Tab" || toggle?.getAttribute("aria-expanded") !== "true" || !menu) return;
-    const focusable = [...menu.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])')].filter(node => !node.hidden && !node.closest("[inert]"));
-    if (toggle && !toggle.disabled) focusable.push(toggle);
-    if (!focusable.length) {
-      event.preventDefault();
-      menu.focus();
-      return;
-    }
-    const first = focusable[0];
-    const lastMenuItem = focusable[focusable.length - 2] || first;
-    if (event.shiftKey && (document.activeElement === first || document.activeElement === toggle || (!menu.contains(document.activeElement) && document.activeElement !== toggle))) {
-      event.preventDefault();
-      (document.activeElement === toggle ? lastMenuItem : toggle).focus();
-    } else if (!event.shiftKey && (document.activeElement === lastMenuItem || document.activeElement === toggle || (!menu.contains(document.activeElement) && document.activeElement !== toggle))) {
-      event.preventDefault();
-      (document.activeElement === lastMenuItem ? toggle : first).focus();
-    }
+  document.addEventListener("click", event => {
+    const link = event.target.closest('a[href^="#"]');
+    if (!link || link.matches(".modal-buy") || menu?.contains(link)) return;
+    let id;
+    try { id = decodeURIComponent(link.hash.slice(1)); } catch { return; }
+    const target = document.getElementById(id);
+    if (!target) return;
+    target.tabIndex = -1;
+    requestAnimationFrame(() => target.focus({ preventScroll: true }));
   });
 
   if (search && clearSearch) {
@@ -91,7 +105,7 @@
   }
 
   const sections = [...document.querySelectorAll("main section[id]")];
-  const navLinks = [...document.querySelectorAll('.desktop-nav a[href^="#"], .mobile-menu a[href^="#"]')];
+  const navLinks = [...document.querySelectorAll('.desktop-nav a[href^="#"], .mobile-menu__nav a[href^="#"]')];
   const activeLinks = new Map();
   const markActive = id => {
     navLinks.forEach(link => {

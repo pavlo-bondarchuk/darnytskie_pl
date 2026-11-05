@@ -110,17 +110,24 @@
   "Wersja demonstracyjna. Lista punktów sprzedaży jest w przygotowaniu; nie mamy jeszcze potwierdzonych adresów.": "Демонстраційна версія. Список магазинів готується; підтверджених адрес поки немає.",
   "BRAK POTWIERDZONEGO PUNKTU": "НЕМАЄ ПІДТВЕРДЖЕНИХ ТОЧОК",
   "WERSJA DEMONSTRACYJNA": "ДЕМОНСТРАЦІЙНА ВЕРСІЯ",
-  "Oczekiwanie na potwierdzone lokalizacje": "Очікуємо на підтверджені адреси"
+  "Oczekiwanie na potwierdzone lokalizacje": "Очікуємо на підтверджені адреси",
+  "Zdjęcie produktu": "Фото продукту"
 };
   translations["Modern Ukrainian Food Heritage"] = "Сучасна українська гастрономічна спадщина";
   translations["DARNYTSKIE WYROBY / PL"] = "ДАРНИЦЬКІ ВИРОБИ / UA";
   translations["SMACZNEJ DROGI"] = "СМАЧНОЇ ДОРОГИ";
+  translations["Smak, jakość i tradycja"] = "Смак, якість і традиція";
+  translations["Smak, który łączy."] = "Смак, що об'єднує.";
   const attributes = {
   "Darnytskie Wyroby — strona główna": "Дарницькі вироби — головна сторінка",
   "Nawigacja główna": "Основна навігація",
   "Otwórz menu": "Відкрити меню",
   "Zamknij menu": "Закрити меню",
   "Nawigacja mobilna": "Мобільна навігація",
+  "Menu główne": "Головне меню",
+  "Język strony": "Мова сайту",
+  "Ukraiński": "Українська",
+  "Polski": "Польська",
   "Poznaj produkty": "Переглянути продукцію",
   "Produkty Darnytskie": "Продукція Дарницькі вироби",
   "Ilustracyjna kompozycja kulinarna inspirowana ukraińskimi smakami": "Ілюстративна гастрономічна композиція, натхненна українськими смаками",

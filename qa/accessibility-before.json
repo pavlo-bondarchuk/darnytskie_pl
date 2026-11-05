@@ -1,0 +1,87 @@
+{
+  "incomplete": [
+    {
+      "count": 2,
+      "id": "aria-prohibited-attr"
+    },
+    {
+      "count": 27,
+      "id": "color-contrast"
+    }
+  ],
+  "passes": 28,
+  "violations": [
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "nodes": [
+        {
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 1.71 (foreground color: #5c3d43, background color: #38141e, font size: 6.8pt (9px), font weight: normal). Expected contrast ratio of 4.5:1",
+          "target": [
+            ".about__signature"
+          ]
+        },
+        {
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.77 (foreground color: #88756a, background color: #f6eddf, font size: 6.0pt (8px), font weight: normal). Expected contrast ratio of 4.5:1",
+          "target": [
+            ".values__top > p:nth-child(2)"
+          ]
+        },
+        {
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.77 (foreground color: #88756a, background color: #f6eddf, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1",
+          "target": [
+            ".values__word--smak > div > p"
+          ]
+        },
+        {
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.77 (foreground color: #88756a, background color: #f6eddf, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1",
+          "target": [
+            ".values__word--jakosc > p"
+          ]
+        },
+        {
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.77 (foreground color: #88756a, background color: #f6eddf, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1",
+          "target": [
+            ".values__word--tradycja > p"
+          ]
+        },
+        {
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.33 (foreground color: #77635b, background color: #ede0cc, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+          "target": [
+            ".table__title-row > p"
+          ]
+        },
+        {
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.36 (foreground color: #88756a, background color: #ede0cc, font size: 5.3pt (7px), font weight: normal). Expected contrast ratio of 4.5:1",
+          "target": [
+            ".visual-note"
+          ]
+        },
+        {
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.77 (foreground color: #88756a, background color: #f6eddf, font size: 6.0pt (8px), font weight: normal). Expected contrast ratio of 4.5:1",
+          "target": [
+            ".contact__top > span"
+          ]
+        },
+        {
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.45 (foreground color: #cd9ea0, background color: #810c2b, font size: 6.8pt (9px), font weight: normal). Expected contrast ratio of 4.5:1",
+          "target": [
+            "footer > p > span"
+          ]
+        },
+        {
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.19 (foreground color: #ca989b, background color: #810c2b, font size: 5.3pt (7px), font weight: normal). Expected contrast ratio of 4.5:1",
+          "target": [
+            ".footer-copy"
+          ]
+        },
+        {
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.19 (foreground color: #ca989b, background color: #810c2b, font size: 5.3pt (7px), font weight: normal). Expected contrast ratio of 4.5:1",
+          "target": [
+            ".footer-copy > span"
+          ]
+        }
+      ]
+    }
+  ]
+}

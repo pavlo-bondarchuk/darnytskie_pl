@@ -11,17 +11,17 @@
   <meta property="og:type" content="website">
   <meta property="og:image" content="assets/lifestyle/hero.webp">
   <title>Darnytskie Wyroby — Smak, który łączy</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/animations.css">
-  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/style.css?v=20261105">
+  <link rel="stylesheet" href="css/animations.css?v=20261105">
+  <link rel="stylesheet" href="css/responsive.css?v=20261105">
   <script defer src="assets/vendor/lucide.min.js"></script>
   <script defer src="assets/vendor/gsap.min.js"></script>
   <script defer src="assets/vendor/ScrollTrigger.min.js"></script>
-  <script defer src="js/i18n.js"></script>
-  <script defer src="js/products.js"></script>
-  <script defer src="js/stores.js"></script>
-  <script defer src="js/main.js"></script>
-  <script defer src="js/animations.js"></script>
+  <script defer src="js/i18n.js?v=20261105"></script>
+  <script defer src="js/products.js?v=20261105"></script>
+  <script defer src="js/stores.js?v=20261105"></script>
+  <script defer src="js/main.js?v=20261105"></script>
+  <script defer src="js/animations.js?v=20261105"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Przejdź do treści</a>
@@ -35,21 +35,24 @@
       <a href="#gdzie-kupic">Gdzie kupić</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
-    <div class="language-switch" role="group" aria-label="Мова сайту"><button type="button" data-language="uk" aria-pressed="true" lang="uk">УКР</button><span aria-hidden="true">/</span><button type="button" data-language="pl" aria-pressed="false" lang="pl">PL</button></div>
+    <div class="language-switch" role="group" aria-label="Język strony"><button type="button" data-language="uk" aria-label="Ukraiński" aria-pressed="true" lang="uk">УКР</button><span aria-hidden="true">/</span><button type="button" data-language="pl" aria-label="Polski" aria-pressed="false" lang="pl">PL</button></div>
     <a class="header-cta" href="#produkty"><span>Poznaj nasze smaki</span><i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
     <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Otwórz menu" aria-controls="mobile-menu" aria-expanded="false">
       <span></span><span></span>
     </button>
   </header>
-  <nav class="mobile-menu" id="mobile-menu" aria-label="Nawigacja mobilna" inert>
-    <a href="#produkty"><span>01</span>Produkty<i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
-    <a href="#o-nas"><span>02</span>O nas<i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
-    <a href="#gdzie-kupic"><span>03</span>Gdzie kupić<i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
-    <a href="#kontakt"><span>04</span>Kontakt<i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+  <dialog class="mobile-menu" id="mobile-menu" aria-label="Menu główne">
+    <button class="menu-close" id="menu-close" type="button" aria-label="Zamknij menu"><i data-lucide="x" aria-hidden="true"></i></button>
+    <nav class="mobile-menu__nav" aria-label="Nawigacja główna">
+      <a href="#produkty"><span>01</span>Produkty<i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+      <a href="#o-nas"><span>02</span>O nas<i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+      <a href="#gdzie-kupic"><span>03</span>Gdzie kupić<i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+      <a href="#kontakt"><span>04</span>Kontakt<i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+    </nav>
     <p>Ukraińskie smaki blisko Ciebie.</p>
-  </nav>
+  </dialog>
 
-  <main id="main">
+  <main id="main" tabindex="-1">
     <section class="hero" id="start" aria-labelledby="hero-title">
       <div class="hero__grain" aria-hidden="true"></div>
       <div class="hero__image-wrap" aria-hidden="true"><img class="hero__image" src="assets/lifestyle/hero.webp" srcset="assets/lifestyle/hero-900.webp 900w, assets/lifestyle/hero.webp 1536w" sizes="(max-width: 760px) 100vw, 67vw" alt="" fetchpriority="high"></div>
@@ -78,7 +81,7 @@
         <p class="section-heading__note">Od dobrze znanych klasyków po smaki, które warto odkryć na nowo. Wybierz swój.</p>
       </div>
       <div class="product-intro-line"><span>NASZE PRODUKTY</span><span>PRZESUŃ KURSOR, ODKRYJ SMAK <i data-lucide="arrow-down-right" aria-hidden="true"></i></span></div>
-      <div class="product-grid" id="product-grid" aria-live="polite" aria-label="Produkty Darnytskie"></div>
+      <div class="product-grid" id="product-grid" role="group" aria-label="Produkty Darnytskie"></div>
       <p class="products__note">Oryginalne projekty etykiet. Fotografie produktów w przygotowaniu.</p>
       <div class="products__footer"><span>01 — 08</span><p>Każdy ma swój ulubiony.</p><a href="#gdzie-kupic">Znajdź blisko siebie <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></div>
     </section>
@@ -140,7 +143,7 @@
 
     <section class="contact section-pad" id="kontakt" aria-labelledby="contact-title">
       <div class="contact__top"><p class="eyebrow eyebrow--wine"><span></span>Porozmawiajmy · 06</p><span>DARNYTSKIE WYROBY / PL</span></div>
-      <div class="contact__main"><div><h2 id="contact-title">Smak zaczyna<br><em>się od rozmowy.</em></h2><p>Chcesz wiedzieć więcej o marce lub współpracy? Odezwij się.</p></div><div class="contact__circle" aria-label="Dane kontaktowe w przygotowaniu"><span>DANE W PRZYGOTOWANIU</span><i data-lucide="arrow-up-right" aria-hidden="true"></i></div></div>
+      <div class="contact__main"><div><h2 id="contact-title">Smak zaczyna<br><em>się od rozmowy.</em></h2><p>Chcesz wiedzieć więcej o marce lub współpracy? Odezwij się.</p></div><div class="contact__circle"><span>DANE W PRZYGOTOWANIU</span><i data-lucide="arrow-up-right" aria-hidden="true"></i></div></div>
       <div class="contact__details"><div><span>EMAIL</span><p>Adres w przygotowaniu</p></div><div><span>MEDIA SPOŁECZNOŚCIOWE</span><p>Linki w przygotowaniu</p></div><div><span>DANE FIRMY</span><p>W przygotowaniu</p></div></div>
     </section>
   </main>
@@ -153,7 +156,7 @@
     <a class="back-top" href="#start" aria-label="Wróć na górę"><i data-lucide="arrow-up" aria-hidden="true"></i></a>
   </footer>
 
-  <dialog class="product-dialog" id="product-dialog" aria-labelledby="modal-name">
+  <dialog class="product-dialog" id="product-dialog" aria-labelledby="modal-name" aria-describedby="modal-description">
     <button class="modal-close" id="modal-close" type="button" aria-label="Zamknij szczegóły produktu"><i data-lucide="x" aria-hidden="true"></i></button>
     <div class="modal-image"></div>
     <div class="modal-content"><p class="eyebrow eyebrow--wine"><span></span><span id="modal-category"></span></p><h2 id="modal-name"></h2><p id="modal-description"></p><div id="modal-specs"></div><a class="button button--wine modal-buy" href="#gdzie-kupic">Gdzie kupić <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></div>
