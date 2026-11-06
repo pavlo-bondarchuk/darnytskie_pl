@@ -84,7 +84,7 @@
 
   document.addEventListener("click", event => {
     const link = event.target.closest('a[href^="#"]');
-    if (!link || link.matches(".modal-buy") || menu?.contains(link)) return;
+    if (!link || link.matches(".product-card__buy") || menu?.contains(link)) return;
     let id;
     try { id = decodeURIComponent(link.hash.slice(1)); } catch { return; }
     const target = document.getElementById(id);

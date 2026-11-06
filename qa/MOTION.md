@@ -1,5 +1,7 @@
 # Motion and product grid review — 2026-11-06
 
+> The product-dialog interaction described in this earlier review was replaced by the inline catalog expansion documented in [INLINE-PRODUCTS.md](INLINE-PRODUCTS.md). The shared hover and entrance-motion observations below remain useful; dialog-specific results are historical.
+
 ## Changes
 
 - Shared easing and timing for color transitions, controls and product artwork.

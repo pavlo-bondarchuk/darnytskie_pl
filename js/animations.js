@@ -17,6 +17,17 @@
   if (!gsap || !ScrollTrigger) return;
   gsap.registerPlugin(ScrollTrigger);
 
+  const cardEntrances = new Set();
+  const finishCardEntrances = () => {
+    cardEntrances.forEach(tween => {
+      tween.progress(1);
+      tween.scrollTrigger?.kill(false);
+      tween.kill();
+    });
+    cardEntrances.clear();
+  };
+  document.addEventListener("darnytskie:productexpand", finishCardEntrances);
+
   let heroIntroStarted = false;
   const isVisibleNow = node => {
     const bounds = node.getBoundingClientRect();
@@ -72,10 +83,13 @@
         }
       );
     });
-
+  });
+  const cardMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const revealCards = () => {
+    if (cardMotion.matches) return;
     productCards.forEach((card, index) => {
-      if (isVisibleNow(card)) return;
-      gsap.from(card, {
+      if (isVisibleNow(card) || card.closest(".product-grid")?.classList.contains("is-expanded")) return;
+      const entrance = gsap.from(card, {
         opacity: 0,
         duration: 0.75,
         delay: (index % 4) * 0.07,
@@ -83,6 +97,12 @@
         clearProps: "opacity",
         scrollTrigger: { trigger: card, start: "top 90%", once: true }
       });
+      cardEntrances.add(entrance);
     });
+  };
+  cardMotion.addEventListener?.("change", event => {
+    finishCardEntrances();
+    if (!event.matches) revealCards();
   });
+  revealCards();
 })();
