@@ -90,9 +90,9 @@
   .product-card__number, .product-card__category { font-size: var(--text-label); line-height: 1.35; letter-spacing: 0; }
   .product-card__category { max-width: 60%; }
   .product-card__image { inset: 12% 6% 43%; }
-  .product-card--photo .product-card__image { inset: 4% 2% 43%; }
   .product-card--large .product-card__image { bottom: 43%; }
   .product-card[data-product-id="uszka-wedzone"] .product-card__image { bottom: 49%; }
+  .product-card--photo .product-card__image { inset: 0; }
   .product-card__bottom { min-height: 42%; align-items: flex-end; gap: .5rem; }
   .product-card__name, .product-card--small .product-card__name, .product-card:not(.product-card--large):not(.product-card--wide):not(.product-card--tall) .product-card__name { max-width: 82%; font-size: clamp(1.25rem, 5.4vw, 1.875rem); line-height: 1.15; overflow-wrap: anywhere; }
   .product-card__arrow { flex-basis: 2.75rem; width: 2.75rem; height: 2.75rem; }
@@ -176,9 +176,9 @@
   .product-card--large, .product-card--wide { grid-column: span 1; }
   .product-card--large, .product-card--tall { grid-row: span 1; }
   .product-card__image { inset: 12% 6% 42%; }
-  .product-card--photo .product-card__image { inset: 4% 2% 42%; }
   .product-card--large .product-card__image { bottom: 42%; }
   .product-card[data-product-id="uszka-wedzone"] .product-card__image { bottom: 48%; }
+  .product-card--photo .product-card__image { inset: 0; }
   .product-card__bottom { min-height: 42%; }
 }
 
