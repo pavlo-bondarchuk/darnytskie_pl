@@ -30,7 +30,7 @@
   const cards = [];
   const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
   const duration = 720;
-  const easing = "cubic-bezier(.22,1,.36,1)";
+  const easing = "cubic-bezier(.2,.8,.2,1)";
   let active = null;
   let generation = 0;
   let resizeFrame = 0;
@@ -61,6 +61,20 @@
       }))
     };
   };
+  const revealRadius = (width, height) => Math.ceil(Math.hypot(width, height) / 2) + 2;
+  const circleMask = (radius, origin) => `circle(${radius}px at ${origin.x}% ${origin.y}%)`;
+  const staggerDelay = (geometry, selectedCard, card, reverse = false) => {
+    const center = rect => ({ x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 });
+    const from = center(geometry.cards.get(selectedCard));
+    const to = center(geometry.cards.get(card));
+    const distance = Math.hypot(to.x - from.x, to.y - from.y);
+    const farthest = Math.max(...Array.from(geometry.cards.values(), rect => {
+      const point = center(rect);
+      return Math.hypot(point.x - from.x, point.y - from.y);
+    }));
+    const progress = farthest ? distance / farthest : 0;
+    return Math.round((reverse ? 1 - progress : progress) * 120);
+  };
   const applyAbsoluteGeometry = geometry => {
     for (const [card, rect] of geometry.cards) {
       Object.assign(card.style, { position: "absolute", left: `${rect.left}px`, top: `${rect.top}px`, width: `${rect.width}px`, height: `${rect.height}px` });
@@ -69,7 +83,7 @@
   const clearOwnedGeometry = () => {
     for (const card of cards) {
       const saved = originalInline?.cards.get(card);
-      for (const property of ["position", "left", "top", "width", "height", "opacity", "transform", "z-index"]) {
+      for (const property of ["position", "left", "top", "width", "height", "opacity", "transform", "z-index", "clip-path"]) {
         const previous = saved?.get(property);
         if (previous) card.style.setProperty(property, previous.value, previous.priority);
         else card.style.removeProperty(property);
@@ -98,9 +112,12 @@
     const token = ++generation;
     state.phase = "closing";
     const currentRects = new Map(cards.map(card => [card, card.getBoundingClientRect()]));
+    const computedMask = getComputedStyle(state.card).clipPath;
     const currentGridHeight = grid.getBoundingClientRect().height;
     const currentGrid = grid.getBoundingClientRect();
     cancelAnimations(state);
+    const fromMask = computedMask !== "none" ? computedMask : circleMask(state.revealRadius, state.revealOrigin);
+    state.card.style.clipPath = fromMask;
     for (const card of cards) card.classList.remove("is-muted");
     grid.style.height = `${currentGridHeight}px`;
     grid.classList.add("is-transitioning");
@@ -112,14 +129,14 @@
         card.style.width = `${currentRects.get(card).width}px`;
         card.style.height = `${currentRects.get(card).height}px`;
       } else {
-        Object.assign(card.style, { position: "absolute", left: `${rect.left}px`, top: `${rect.top}px`, width: `${rect.width}px`, height: `${rect.height}px`, opacity: "0", transform: "scale(.78)" });
+        Object.assign(card.style, { position: "absolute", left: `${rect.left}px`, top: `${rect.top}px`, width: `${rect.width}px`, height: `${rect.height}px`, opacity: "0", transform: "scale(.9)" });
       }
     }
     const animations = [];
     if (!motionQuery.matches && typeof Element.prototype.animate === "function") {
       for (const [card, rect] of state.geometry.cards) {
         if (card !== state.card) {
-          animations.push(card.animate([{ opacity: 0, transform: "scale(.78)" }, { opacity: 1, transform: "scale(1)" }], { duration: 440, easing, fill: "forwards" }));
+          animations.push(card.animate([{ opacity: 0, transform: "scale(.9)" }, { opacity: 1, transform: "scale(1)" }], { duration: 460, delay: staggerDelay(state.geometry, state.card, card, true), easing, fill: "forwards" }));
           continue;
         }
         const from = currentRects.get(card);
@@ -128,6 +145,10 @@
           { left: `${rect.left}px`, top: `${rect.top}px`, width: `${rect.width}px`, height: `${rect.height}px` }
         ], { duration: card === state.card ? duration : 440, easing, fill: "forwards" }));
       }
+      animations.push(state.card.animate([
+        { clipPath: fromMask },
+        { clipPath: circleMask(0, state.revealOrigin) }
+      ], { duration, easing, fill: "forwards" }));
       animations.push(grid.animate([{ height: `${currentGridHeight}px` }, { height: `${state.geometry.grid.height}px` }], { duration: duration, easing, fill: "forwards" }));
     }
     grid.style.height = `${state.geometry.grid.height}px`;
@@ -161,6 +182,7 @@
       return;
     }
     document.dispatchEvent(new CustomEvent("darnytskie:productexpand", { detail: { card } }));
+    const revealOrigin = { x: 50, y: 50 };
     const geometry = makeGeometry();
     const capped = window.innerWidth <= 1100;
     const headerAllowance = Math.max(0, window.innerHeight - headerBottom() - 32);
@@ -169,9 +191,9 @@
     const token = ++generation;
     originalInline = {
       gridHeight: grid.style.getPropertyValue("height") ? { value: grid.style.getPropertyValue("height"), priority: grid.style.getPropertyPriority("height") } : null,
-      cards: new Map(cards.map(item => [item, new Map(["position", "left", "top", "width", "height", "opacity", "transform", "z-index"].map(property => [property, item.style.getPropertyValue(property) ? { value: item.style.getPropertyValue(property), priority: item.style.getPropertyPriority(property) } : null]))]))
+      cards: new Map(cards.map(item => [item, new Map(["position", "left", "top", "width", "height", "opacity", "transform", "z-index", "clip-path"].map(property => [property, item.style.getPropertyValue(property) ? { value: item.style.getPropertyValue(property), priority: item.style.getPropertyPriority(property) } : null]))]))
     };
-    active = { card, trigger, geometry, phase: "opening", token, animations: [] };
+    active = { card, trigger, geometry, phase: "opening", token, animations: [], revealOrigin, revealRadius: revealRadius(gridWidth, targetHeight) };
     scrollGridIntoView();
     const gridRectAfterScroll = grid.getBoundingClientRect();
     const liveGeometry = {
@@ -209,7 +231,7 @@
     if (!motionQuery.matches && typeof Element.prototype.animate === "function") {
       for (const [item, rect] of destination) {
         if (item !== card) {
-          animations.push(item.animate([{ opacity: 1, transform: "scale(1)" }, { opacity: 0, transform: "scale(.78)" }], { duration: 440, easing, fill: "forwards" }));
+          animations.push(item.animate([{ opacity: 1, transform: "scale(1)" }, { opacity: 0, transform: "scale(.9)" }], { duration: 460, delay: staggerDelay(liveGeometry, card, item), easing, fill: "forwards" }));
           continue;
         }
         const start = starts.get(item);
@@ -217,6 +239,10 @@
           { left: `${start.left - liveGeometry.grid.left}px`, top: `${start.top - liveGeometry.grid.top}px`, width: `${start.width}px`, height: `${start.height}px` },
           { left: `${rect.left}px`, top: `${rect.top}px`, width: `${rect.width}px`, height: `${rect.height}px` }
         ], { duration: item === card ? duration : 440, easing, fill: "forwards" }));
+        if (item === card) animations.push(item.animate([
+          { clipPath: circleMask(0, revealOrigin) },
+          { clipPath: circleMask(active.revealRadius, revealOrigin) }
+        ], { duration, easing, fill: "forwards" }));
       }
       if (capped) animations.push(grid.animate([{ height: `${geometry.grid.height}px` }, { height: `${targetHeight}px` }], { duration, easing, fill: "forwards" }));
     }
@@ -225,7 +251,7 @@
     await waitFor(animations);
     if (token !== generation || !active || active.card !== card) return;
     for (const [item, rect] of destination) Object.assign(item.style, { left: `${rect.left}px`, top: `${rect.top}px`, width: `${rect.width}px`, height: `${rect.height}px` });
-    for (const item of cards) if (item !== card) { item.style.opacity = "0"; item.style.transform = "scale(.78)"; }
+    for (const item of cards) if (item !== card) { item.style.opacity = "0"; item.style.transform = "scale(.9)"; }
     cancelAnimations(active);
     grid.classList.remove("is-transitioning");
     active.phase = "open";
@@ -321,7 +347,7 @@
       const targetHeight = window.innerWidth <= 1100 ? Math.min(state.geometry.grid.height, Math.max(520, Math.min(800, window.innerHeight - headerBottom() - 32))) : state.geometry.grid.height;
       grid.style.height = `${targetHeight}px`;
       Object.assign(state.card.style, { left: "0px", top: "0px", width: `${state.geometry.grid.width}px`, height: `${targetHeight}px` });
-      for (const item of cards) if (item !== state.card) { item.style.opacity = "0"; item.style.transform = "scale(.78)"; }
+      for (const item of cards) if (item !== state.card) { item.style.opacity = "0"; item.style.transform = "scale(.9)"; }
       grid.classList.remove("is-transitioning");
       focus(state.card.querySelector(".product-card__close"));
     }

@@ -120,7 +120,7 @@ html[lang="uk"] .hero h1 { font-size: clamp(4rem, 9vw, 9rem); line-height: .98; 
 .product-grid.is-expanded { position: relative; display: block; isolation: isolate; overflow: hidden; overflow-anchor: none; }
 .product-grid.is-expanded > .product-card { position: absolute; margin: 0; }
 .product-grid.is-expanded > .product-card.is-expanded { z-index: 3; }
-.product-grid.is-expanded > .product-card.is-muted { z-index: 1; pointer-events: none; opacity: 0; transform: scale(.78); }
+.product-grid.is-expanded > .product-card.is-muted { z-index: 1; pointer-events: none; opacity: 0; transform: scale(.9); }
 .product-grid.is-transitioning { overflow: hidden; }
 .product-grid.is-expanded > .product-card.is-expanded .product-card__trigger,
 .product-grid.is-expanded > .product-card.is-muted .product-card__trigger { display: none; }
