@@ -367,7 +367,7 @@
     servingImage.alt = "";
     servingImage.loading = "lazy";
     servingImage.decoding = "async";
-    picture.append(servingImage, artwork);
+    picture.append(servingImage);
 
     const bottom = document.createElement("div");
     bottom.className = "product-card__bottom";
@@ -392,7 +392,10 @@
     const packaging = dualText("p", "detail-label", "Назва на етикетці", "Nazwa na etykiecie");
     const printedName = text("p", "pack-name", product.labelName || product.originalName);
     printedName.lang = "uk";
-    details.append(caption, description, packaging, printedName);
+    const packInfo = document.createElement("div");
+    packInfo.className = "pack-info";
+    packInfo.append(packaging, printedName, artwork);
+    details.append(caption, description, packInfo);
     const closeButton = dualText("button", "product-card__close", "Закрити", "Zamknij");
     closeButton.type = "button";
     closeButton.hidden = true;

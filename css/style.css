@@ -76,12 +76,8 @@ h2 { font: 500 clamp(2.5rem, 4.4vw, 4.8rem)/1.12 var(--display); letter-spacing:
 .product-card.is-muted { pointer-events: none; }
 .product-card.is-expanded { z-index: 2; }
 .product-card__image { position: relative; display: grid; place-items: center; aspect-ratio: 1.58; background: radial-gradient(ellipse at 33% 15%, #fff7, transparent 64%), var(--product-color); overflow: hidden; }
-.product-card__image .label-art { position: absolute; inset: 0; margin: auto; width: auto; max-width: 80%; height: auto; max-height: 76%; border-radius: 50%; filter: drop-shadow(0 5px 4px #36160e26); transform: rotate(-6deg); transition: transform .26s ease; }
-.product-card:is([data-product-id="vershkova"],[data-product-id="studentska"],[data-product-id="olivye"],[data-product-id="molochna"]) .label-art { border-radius: 0; }
-.product-card__image .label-art, .product-card.is-expanded .serving-art { display: none; }
-.product-card.is-expanded .label-art { display: block; }
 .product-card__image .serving-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .3s ease; }
-.product-card:hover .serving-art { transform: scale(1.035); }
+.product-card:not(.is-expanded):hover .serving-art { transform: scale(1.035); }
 .product-card__bottom { position: relative; padding: .95rem 2.85rem 1.25rem 1rem; }
 .product-card__category, .detail-label { color: var(--wine); text-transform: uppercase; letter-spacing: .055em; font-size: .875rem; font-weight: 700; }
 .product-card__name { font: 500 clamp(1.42rem, 1.9vw, 2.1rem)/1.15 var(--display); letter-spacing: -.018em; margin-top: .28rem; }
@@ -91,11 +87,12 @@ h2 { font: 500 clamp(2.5rem, 4.4vw, 4.8rem)/1.12 var(--display); letter-spacing:
 .product-card__trigger:focus-visible { outline-offset: -4px; }
 .product-card.is-expanded { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr auto; }
 .product-card.is-expanded .product-card__image { aspect-ratio: auto; min-height: 0; background-color: var(--product-color); }
-.product-card.is-expanded .product-card__image img { max-height: 70%; max-width: 80%; object-fit: contain; }
 .product-card.is-expanded .product-card__bottom { grid-area: 2/1; padding: 1rem 1.5rem; }
 .product-card__details { grid-area: 1/2/3/3; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: clamp(1.25rem,4vw,4rem); overflow: auto; }
 .detail-copy { margin: .6rem 0 1.5rem; max-width: 34ch; font-size: clamp(1rem,1.55vw,1.45rem); }
-.pack-name { margin-top: .4rem; }
+.pack-info { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: .25rem 1rem; width: min(100%, 24rem); padding-top: 1rem; border-top: 1px solid var(--line); }
+.pack-info .label-art { grid-area: 1 / 2 / span 2; width: auto; height: auto; max-width: clamp(4rem, 8vw, 7.5rem); max-height: 4.5rem; }
+.pack-name { grid-column: 1; }
 .product-card__close, .menu-close { border: 1px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 2rem; min-height: 2.75rem; }
 .product-card__close { position: absolute; z-index: 4; right: .7rem; top: .7rem; padding: .45rem 1rem; }
 .product-card__close:hover { color: white; background: var(--wine); }
