@@ -1,13 +1,15 @@
 (() => {
   const products = [
-    { id: "vershkova", name: "Śmietankowa", originalName: "Вершкова", category: "Kiełbasa", color: "#E8B868", label: "assets/labels/sausage-butter-rect.webp", image: "assets/products/vershkova.webp", size: "product-card--large", description: "Poznaj Śmietankową — produkt marki „Дарницькі вироби”. Szczegóły produktu uzupełnimy po zatwierdzeniu danych." },
-    { id: "doktorska", name: "Doktorska", originalName: "Докторська", category: "Kiełbasa", color: "#E87888", label: "assets/labels/sausage-doctor-classic.webp", size: "product-card--wide", description: "Poznaj Doktorską — produkt marki „Дарницькі вироби”. Szczegóły produktu uzupełnimy po zatwierdzeniu danych." },
-    { id: "studentska", name: "Studencka", originalName: "Студентська", category: "Kiełbasa", color: "#B63348", label: "assets/labels/sausage-student.webp", size: "product-card--tall", description: "Poznaj Studencką — produkt marki „Дарницькі вироби”. Szczegóły produktu uzupełnimy po zatwierdzeniu danych." },
-    { id: "gota", name: "Gota", originalName: "Гота", category: "Kiełbasa", color: "#76518F", label: "assets/labels/sausage-gota.webp", size: "", description: "Poznaj Gotę — produkt marki „Дарницькі вироби”. Szczegóły produktu uzupełnimy po zatwierdzeniu danych." },
-    { id: "doktorska-premium", name: "Doktorska Premium", originalName: "Докторська Преміум", category: "Kiełbasa", color: "#2FAE4A", label: "assets/labels/sausage-doctor-premium.webp", size: "product-card--wide", description: "Poznaj Doktorską Premium — produkt marki „Дарницькі вироби”. Szczegóły produktu uzupełnimy po zatwierdzeniu danych." },
-    { id: "doktorska-extra", name: "Doktorska Extra", originalName: "Докторська Екстра", category: "Kiełbasa", color: "#1EA7E8", label: "assets/labels/sausage-doctor-extra.webp", size: "product-card--tall", description: "Poznaj Doktorską Extra — produkt marki „Дарницькі вироби”. Szczegóły produktu uzupełnimy po zatwierdzeniu danych." },
-    { id: "uszka-wedzone", name: "Wędzone uszy wieprzowe", originalName: "Копчені свинячі вуха", category: "Przekąska", color: "#A65B32", label: "assets/labels/pork-ears-smoked.webp", size: "", description: "Poznaj wędzone uszy wieprzowe — produkt marki „Дарницькі вироби”. Szczegóły produktu uzupełnimy po zatwierdzeniu danych." },
-    { id: "parowki", name: "Parówki Doktorskie", originalName: "Сосиски Докторські", category: "Parówki", color: "#E8BC6A", label: "assets/labels/sausage-doctor-oval.webp", size: "product-card--wide", description: "Poznaj Parówki Doktorskie — produkt marki „Дарницькі вироби”. Szczegóły produktu uzupełnimy po zatwierdzeniu danych." }
+    { id: "vershkova", name: "Śmietankowa", originalName: "Вершкова", category: "Kiełbasa", color: "#E8B868", label: "assets/labels/sausage-butter-rect.webp", size: "product-card--large", description: "Ułóż plastry na ciepłej grzance z masłem i posyp szczypiorkiem." },
+    { id: "doktorska", name: "Doktorska", originalName: "Докторська", category: "Kiełbasa", color: "#E87888", label: "assets/labels/sausage-doctor-classic.webp", size: "product-card--wide", description: "Do cienkich plastrów podaj chleb żytni i odrobinę musztardy." },
+    { id: "studentska", name: "Studencka", originalName: "Студентська", category: "Kiełbasa", color: "#B63348", label: "assets/labels/sausage-student.webp", size: "product-card--tall", description: "Przekrój bułkę z makiem, posmaruj musztardą i przełóż kiełbasą oraz ogórkiem." },
+    { id: "gota", name: "Gota", originalName: "Гота", category: "Kiełbasa", color: "#76518F", label: "assets/labels/sausage-gota.webp", size: "", description: "Podaj cienkie plastry z chrupkim pieczywem żytnim i krążkami czerwonej cebuli." },
+    { id: "doktorska-premium", name: "Doktorska Premium", originalName: "Докторська Преміум", category: "Kiełbasa", color: "#2FAE4A", label: "assets/labels/sausage-doctor-premium.webp", size: "product-card--wide", description: "Złóż cienkie plastry na bagietce z masłem i dodaj korniszony." },
+    { id: "doktorska-extra", name: "Doktorska Extra", originalName: "Докторська Екстра", category: "Kiełbasa", color: "#1EA7E8", label: "assets/labels/sausage-doctor-extra.webp", size: "product-card--tall", description: "Zapiecz w kanapce z serem i pomidorem. Przekrój po skosie i podaj na gorąco." },
+    { id: "uszka-wedzone", name: "Wędzone uszy wieprzowe", originalName: "Копчені свинячі вуха", category: "Przekąska", color: "#A65B32", label: "assets/labels/pork-ears-smoked.webp", size: "", description: "Podaj z marynowaną cebulą, musztardą i chrupiącym pieczywem żytnim." },
+    { id: "parowki", name: "Parówki Doktorskie", originalName: "Сосиски Докторські", category: "Parówki", color: "#E8BC6A", label: "assets/labels/sausage-doctor-oval.webp", size: "product-card--wide", description: "Podgrzej parówki, włóż do rumianej bułki i dodaj musztardę oraz posiekany ogórek." },
+    { id: "molochna", name: "Mleczna", originalName: "Молочна", category: "Kiełbasa", color: "#73AABC", label: "assets/labels/sausage-milk-rect.webp", size: "product-card--wide", description: "Podaj na ciepło z jajkiem sadzonym, koperkiem i chrupiącym tostem." },
+    { id: "olivye", name: "Olivier", originalName: "Олів’є", category: "Kiełbasa", color: "#557345", label: "assets/labels/sausage-olivye.webp", size: "product-card--wide", description: "Pokrój w kostkę i połącz z groszkiem, ziemniakami, marchewką i majonezem." }
   ];
 
   window.PRODUCTS = products;
@@ -261,7 +263,7 @@
 
   products.forEach((product, index) => {
     const card = document.createElement("article");
-    card.className = `product-card ${product.size} ${product.image ? "product-card--photo" : ""}`.trim();
+    card.className = `product-card ${product.size} product-card--photo`.trim();
     card.dataset.productId = product.id;
     card.style.setProperty("--product-color", product.color);
     card.setAttribute("aria-labelledby", `product-name-${product.id}`);
@@ -269,7 +271,7 @@
     picture.className = "product-card__image";
     picture.setAttribute("aria-hidden", "true");
     const artwork = document.createElement("img");
-    artwork.src = product.image || product.label;
+    artwork.src = `assets/products/serving/${product.id}.webp`;
     artwork.alt = "";
     artwork.loading = index < 3 ? "eager" : "lazy";
     artwork.decoding = "async";

@@ -1,5 +1,17 @@
 (() => {
   const translations = {
+  "Ułóż plastry na ciepłej grzance z masłem i posyp szczypiorkiem.": "Викладіть скибочки на теплий тост із маслом і посипте зеленою цибулею.",
+  "Do cienkich plastrów podaj chleb żytni i odrobinę musztardy.": "До тонких скибочок подайте житній хліб і трохи гірчиці.",
+  "Przekrój bułkę z makiem, posmaruj musztardą i przełóż kiełbasą oraz ogórkiem.": "Розріжте булочку з маком, змастіть гірчицею й додайте ковбасу та огірок.",
+  "Podaj cienkie plastry z chrupkim pieczywem żytnim i krążkami czerwonej cebuli.": "До тонко нарізаної ковбаси додайте житні хлібці та кільця червоної цибулі.",
+  "Złóż cienkie plastry na bagietce z masłem i dodaj korniszony.": "Викладіть тонкі скибочки складками на багет із маслом і додайте корнішони.",
+  "Zapiecz w kanapce z serem i pomidorem. Przekrój po skosie i podaj na gorąco.": "Підсмажте сендвіч із ковбасою, сиром і помідором. Розріжте навскіс і подавайте гарячим.",
+  "Podaj z marynowaną cebulą, musztardą i chrupiącym pieczywem żytnim.": "Подавайте з маринованою цибулею, гірчицею та хрустким житнім хлібом.",
+  "Podgrzej parówki, włóż do rumianej bułki i dodaj musztardę oraz posiekany ogórek.": "Підігрійте сосиски, покладіть у рум’яну булочку й додайте гірчицю та дрібно нарізаний огірок.",
+  "Mleczna": "Молочна",
+  "Olivier": "Олів’є",
+  "Podaj na ciepło z jajkiem sadzonym, koperkiem i chrupiącym tostem.": "Подавайте теплою з яєчнею, кропом і хрустким тостом.",
+  "Pokrój w kostkę i połącz z groszkiem, ziemniakami, marchewką i majonezem.": "Наріжте кубиками й додайте горошок, картоплю, моркву та майонез.",
   "Przejdź do treści": "Перейти до вмісту",
   "Produkty": "Продукція",
   "O nas": "Про нас",
