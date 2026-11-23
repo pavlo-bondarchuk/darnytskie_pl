@@ -117,6 +117,46 @@
   };
   const cards = [];
   const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const hoverMotion = window.matchMedia("(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)");
+  let tracked = null;
+  let tiltFrame = 0;
+  const clearTilt = () => {
+    cancelAnimationFrame(tiltFrame);
+    if (!tracked) return;
+    tracked.classList.remove("is-tracking");
+    tracked.style.removeProperty("--tilt-x");
+    tracked.style.removeProperty("--tilt-y");
+    tracked = null;
+  };
+  grid.addEventListener("pointermove", event => {
+    if (event.pointerType !== "mouse" || !hoverMotion.matches || active) return;
+    const card = event.target.closest(".product-card");
+    if (card !== tracked) clearTilt();
+    if (!card) return;
+    tracked = card;
+    cancelAnimationFrame(tiltFrame);
+    tiltFrame = requestAnimationFrame(() => {
+      const rect = card.getBoundingClientRect();
+      const angle = fraction => Math.max(-1, Math.min(1, 2 * fraction - 1)) * 7;
+      card.style.setProperty("--tilt-x", -angle((event.clientY - rect.top) / rect.height) + "deg");
+      card.style.setProperty("--tilt-y", angle((event.clientX - rect.left) / rect.width) + "deg");
+      card.classList.add("is-tracking");
+    });
+  });
+  grid.addEventListener("pointerleave", clearTilt);
+  grid.addEventListener("pointercancel", clearTilt);
+  window.addEventListener("blur", clearTilt);
+  hoverMotion.addEventListener("change", clearTilt);
+  const heading = document.querySelector(".catalog .section-intro > div");
+  if (heading && "IntersectionObserver" in window && !motionQuery.matches) {
+    heading.classList.add("catalog-intro-ready");
+    const observer = new IntersectionObserver(entries => {
+      if (!entries.some(entry => entry.isIntersecting)) return;
+      heading.classList.replace("catalog-intro-ready", "catalog-intro-reveal");
+      observer.disconnect();
+    }, { threshold: .15 });
+    observer.observe(heading);
+  }
   const duration = 720;
   const easing = "cubic-bezier(.2,.8,.2,1)";
   let active = null;
@@ -262,6 +302,7 @@
       return;
     }
     document.dispatchEvent(new CustomEvent("darnytskie:productexpand", { detail: { card } }));
+    clearTilt();
     const revealOrigin = { x: 50, y: 50 };
     const geometry = makeGeometry();
 
@@ -388,7 +429,10 @@
     closeButton.type = "button";
     closeButton.hidden = true;
     closeButton.addEventListener("click", () => closeCurrent());
-    card.append(picture, bottom, trigger, details, closeButton);
+    const surface = document.createElement("div");
+    surface.className = "product-card__surface";
+    surface.append(picture, bottom, trigger);
+    card.append(surface, details, closeButton);
     grid.append(card);
     cards.push(card);
   });
@@ -396,6 +440,7 @@
 
   const filters = [...document.querySelectorAll("[data-filter]")];
   const setFilter = category => {
+    clearTilt();
     filters.forEach(button => button.setAttribute("aria-pressed", String(button.dataset.filter === category)));
     cards.forEach(card => { card.hidden = category !== "all" && card.dataset.category !== category; });
   };

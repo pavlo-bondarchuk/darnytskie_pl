@@ -254,7 +254,37 @@ h2 { font: 500 clamp(2.5rem, 4.4vw, 4.8rem)/1.12 var(--display); letter-spacing:
 .product-card.is-expanded { z-index: 2; }
 .product-card__image { position: relative; display: grid; place-items: center; aspect-ratio: 1.58; background: radial-gradient(ellipse at 33% 15%, #fff7, transparent 64%), var(--product-color); overflow: hidden; }
 .product-card__image .serving-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .3s ease; }
-.product-card:not(.is-expanded):hover .serving-art { transform: scale(1.035); }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .product-grid:not(.is-expanded) .product-card {
+    border-color: transparent;
+    background: transparent;
+    overflow: visible;
+  }
+  .product-grid:not(.is-expanded) .product-card__surface {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    position: relative;
+    margin: -1px;
+    border: 1px solid #d9cdbb;
+    border-radius: inherit;
+    overflow: hidden;
+    background: #fffaf2;
+    transform: perspective(850px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+    transition: transform .32s ease-out, box-shadow .32s ease-out;
+  }
+  .product-card.is-tracking { z-index: 1; }
+  .product-grid:not(.is-expanded) .is-tracking .product-card__surface {
+    transition-duration: .12s;
+    box-shadow: 0 .55rem 1.35rem rgb(54 20 25 / 16%);
+  }
+}
+.product-card__surface { display: contents; }
+@media (prefers-reduced-motion: no-preference) {
+  .catalog-intro-ready :is(.eyebrow, h2) { opacity: 0; }
+  .catalog-intro-reveal .eyebrow { animation: slogan-rise .7s cubic-bezier(.2,.7,.3,1) backwards; }
+  .catalog-intro-reveal h2 { animation: slogan-rise .7s cubic-bezier(.2,.7,.3,1) .12s backwards, slogan-unveil 1.16s ease-out .12s backwards; }
+}
 .product-card__bottom { position: relative; padding: .95rem 2.85rem 1.25rem 1rem; }
 .product-card__category, .detail-label { color: var(--wine); text-transform: uppercase; letter-spacing: .055em; font-size: .875rem; font-weight: 700; }
 .product-card__name { font: 500 clamp(1.42rem, 1.9vw, 2.1rem)/1.15 var(--display); letter-spacing: -.018em; margin-top: .28rem; }
