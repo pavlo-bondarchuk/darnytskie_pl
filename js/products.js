@@ -1,15 +1,107 @@
 (() => {
   const products = [
-    { id: "vershkova", name: "Śmietankowa", originalName: "Вершкова", category: "Kiełbasa", color: "#E8B868", label: "assets/labels/sausage-butter-rect.webp", size: "product-card--large", description: "Ułóż plastry na ciepłej grzance z masłem i posyp szczypiorkiem." },
-    { id: "doktorska", name: "Doktorska", originalName: "Докторська", category: "Kiełbasa", color: "#E87888", label: "assets/labels/sausage-doctor-classic.webp", size: "product-card--wide", description: "Do cienkich plastrów podaj chleb żytni i odrobinę musztardy." },
-    { id: "studentska", name: "Studencka", originalName: "Студентська", category: "Kiełbasa", color: "#B63348", label: "assets/labels/sausage-student.webp", size: "product-card--tall", description: "Przekrój bułkę z makiem, posmaruj musztardą i przełóż kiełbasą oraz ogórkiem." },
-    { id: "gota", name: "Gota", originalName: "Гота", category: "Kiełbasa", color: "#76518F", label: "assets/labels/sausage-gota.webp", size: "", description: "Podaj cienkie plastry z chrupkim pieczywem żytnim i krążkami czerwonej cebuli." },
-    { id: "doktorska-premium", name: "Doktorska Premium", originalName: "Докторська Преміум", category: "Kiełbasa", color: "#2FAE4A", label: "assets/labels/sausage-doctor-premium.webp", size: "product-card--wide", description: "Złóż cienkie plastry na bagietce z masłem i dodaj korniszony." },
-    { id: "doktorska-extra", name: "Doktorska Extra", originalName: "Докторська Екстра", category: "Kiełbasa", color: "#1EA7E8", label: "assets/labels/sausage-doctor-extra.webp", size: "product-card--tall", description: "Zapiecz w kanapce z serem i pomidorem. Przekrój po skosie i podaj na gorąco." },
-    { id: "uszka-wedzone", name: "Wędzone uszy wieprzowe", originalName: "Копчені свинячі вуха", category: "Przekąska", color: "#A65B32", label: "assets/labels/pork-ears-smoked.webp", size: "", description: "Podaj z marynowaną cebulą, musztardą i chrupiącym pieczywem żytnim." },
-    { id: "parowki", name: "Parówki Doktorskie", originalName: "Сосиски Докторські", category: "Parówki", color: "#E8BC6A", label: "assets/labels/sausage-doctor-oval.webp", size: "product-card--wide", description: "Podgrzej parówki, włóż do rumianej bułki i dodaj musztardę oraz posiekany ogórek." },
-    { id: "molochna", name: "Mleczna", originalName: "Молочна", category: "Kiełbasa", color: "#73AABC", label: "assets/labels/sausage-milk-rect.webp", size: "product-card--wide", description: "Podaj na ciepło z jajkiem sadzonym, koperkiem i chrupiącym tostem." },
-    { id: "olivye", name: "Olivier", originalName: "Олів’є", category: "Kiełbasa", color: "#557345", label: "assets/labels/sausage-olivye.webp", size: "product-card--wide", description: "Pokrój w kostkę i połącz z groszkiem, ziemniakami, marchewką i majonezem." }
+    {
+      id: "vershkova",
+      name: "Śmietankowa",
+      originalName: "Вершкова",
+      category: "Kiełbasa",
+      color: "#ecd3a3",
+      label: "assets/labels/sausage-butter-rect.webp",
+      description: "Викладіть скибочки на теплий тост із маслом і посипте зеленою цибулею.",
+      descriptionPl: "Ułóż plastry na ciepłej grzance z masłem i posyp szczypiorkiem."
+    },
+    {
+      id: "doktorska",
+      name: "Doktorska",
+      originalName: "Докторська",
+      category: "Kiełbasa",
+      color: "#f2d8cc",
+      label: "assets/labels/sausage-doctor-classic.webp",
+      description: "До тонких скибочок подайте житній хліб і трохи гірчиці.",
+      descriptionPl: "Do cienkich plastrów podaj chleb żytni i odrobinę musztardy."
+    },
+    {
+      id: "studentska",
+      name: "Studencka",
+      originalName: "Студентська",
+      category: "Kiełbasa",
+      color: "#ddc5aa",
+      label: "assets/labels/sausage-student.webp",
+      description: "Розріжте булочку з маком, змастіть гірчицею й додайте ковбасу та огірок.",
+      descriptionPl: "Przekrój bułkę z makiem, posmaruj musztardą i przełóż kiełbasą oraz ogórkiem."
+    },
+    {
+      id: "gota",
+      name: "Gota",
+      originalName: "Гота",
+      labelName: "Ковбаса GOTA",
+      category: "Kiełbasa",
+      color: "#d9cbdc",
+      label: "assets/labels/sausage-gota.webp",
+      description: "До тонко нарізаної ковбаси додайте житні хлібці та кільця червоної цибулі.",
+      descriptionPl: "Podaj cienkie plastry z chrupkim pieczywem żytnim i krążkami czerwonej cebuli."
+    },
+    {
+      id: "doktorska-premium",
+      name: "Doktorska Premium",
+      originalName: "Докторська Преміум",
+      category: "Kiełbasa",
+      color: "#d4ddbf",
+      label: "assets/labels/sausage-doctor-premium.webp",
+      description: "Викладіть тонкі скибочки складками на багет із маслом і додайте корнішони.",
+      descriptionPl: "Złóż cienkie plastry na bagietce z masłem i dodaj korniszony."
+    },
+    {
+      id: "doktorska-extra",
+      name: "Doktorska Extra",
+      originalName: "Докторська Екстра",
+      category: "Kiełbasa",
+      color: "#c8dce3",
+      label: "assets/labels/sausage-doctor-extra.webp",
+      description: "Підсмажте сендвіч із ковбасою, сиром і помідором. Розріжте навскіс і подавайте гарячим.",
+      descriptionPl: "Zapiecz w kanapce z serem i pomidorem. Przekrój po skosie i podaj na gorąco."
+    },
+    {
+      id: "uszka-wedzone",
+      name: "Wędzone uszy wieprzowe",
+      originalName: "Копчені свинячі вуха",
+      labelName: "Свинячі вуха гарячого копчення",
+      category: "Przekąska",
+      color: "#e1c5af",
+      label: "assets/labels/pork-ears-smoked.webp",
+      description: "Подавайте з маринованою цибулею, гірчицею та хрустким житнім хлібом.",
+      descriptionPl: "Podaj z marynowaną cebulą, musztardą i chrupiącym pieczywem żytnim."
+    },
+    {
+      id: "parowki",
+      name: "Parówki Doktorskie",
+      originalName: "Сосиски Докторські",
+      category: "Parówki",
+      color: "#f1dcb9",
+      label: "assets/labels/sausage-doctor-oval.webp",
+      description: "Підігрійте сосиски, покладіть у рум’яну булочку й додайте гірчицю та дрібно нарізаний огірок.",
+      descriptionPl: "Podgrzej parówki, włóż do rumianej bułki i dodaj musztardę oraz posiekany ogórek."
+    },
+    {
+      id: "molochna",
+      name: "Mleczna",
+      originalName: "Молочна",
+      category: "Kiełbasa",
+      color: "#dfcfb7",
+      label: "assets/labels/sausage-milk-rect.webp",
+      description: "Подавайте теплою з яєчнею, кропом і хрустким тостом.",
+      descriptionPl: "Podaj na ciepło z jajkiem sadzonym, koperkiem i chrupiącym tostem."
+    },
+    {
+      id: "olivye",
+      name: "Olivier",
+      originalName: "Олів’є",
+      category: "Kiełbasa",
+      color: "#dfcfb7",
+      label: "assets/labels/sausage-olivye.webp",
+      description: "Наріжте кубиками й додайте горошок, картоплю, моркву та майонез.",
+      descriptionPl: "Pokrój w kostkę i połącz z groszkiem, ziemniakami, marchewką i majonezem."
+    }
   ];
 
   window.PRODUCTS = products;
@@ -21,12 +113,6 @@
     const node = document.createElement(tag);
     node.className = className;
     node.textContent = value;
-    return node;
-  };
-  const icon = name => {
-    const node = document.createElement("i");
-    node.dataset.lucide = name;
-    node.setAttribute("aria-hidden", "true");
     return node;
   };
   const cards = [];
@@ -107,7 +193,7 @@
     grid.classList.remove("is-expanded", "is-transitioning");
     originalInline = null;
   };
-  const closeCurrent = async ({ focusTarget, scrollToStore = false } = {}) => {
+  const closeCurrent = async () => {
     if (!active) return;
     const state = active;
     if (state.phase === "closing") return;
@@ -165,18 +251,10 @@
     cancelAnimations(state);
     active = null;
     window.ScrollTrigger?.refresh();
-    const destination = scrollToStore ? document.querySelector("#gdzie-kupic") : (focusTarget || state.trigger);
-    if (scrollToStore && destination) destination.tabIndex = -1;
-    if (destination) {
-      if (scrollToStore) {
-        if (location.hash !== "#gdzie-kupic") history.pushState(null, "", "#gdzie-kupic");
-        destination.scrollIntoView({ behavior: motionQuery.matches ? "instant" : "smooth", block: "start" });
-      } else {
-        const rect = destination.getBoundingClientRect();
-        if (rect.top < headerBottom() || rect.bottom > window.innerHeight) destination.scrollIntoView({ behavior: motionQuery.matches ? "instant" : "smooth", block: "nearest" });
-      }
-      requestAnimationFrame(() => focus(destination));
-    }
+    const destination = state.trigger;
+    const rect = destination.getBoundingClientRect();
+    if (rect.top < headerBottom() || rect.bottom > window.innerHeight) destination.scrollIntoView({ behavior: "instant", block: "nearest" });
+    focus(destination);
   };
   const open = async (card, trigger) => {
     if (active) {
@@ -186,9 +264,9 @@
     document.dispatchEvent(new CustomEvent("darnytskie:productexpand", { detail: { card } }));
     const revealOrigin = { x: 50, y: 50 };
     const geometry = makeGeometry();
-    const capped = window.innerWidth <= 1100;
+
     const headerAllowance = Math.max(0, window.innerHeight - headerBottom() - 32);
-    const targetHeight = capped ? Math.min(geometry.grid.height, Math.max(520, Math.min(800, headerAllowance))) : geometry.grid.height;
+    const targetHeight = Math.max(500, Math.min(640, headerAllowance));
     const gridWidth = geometry.grid.width;
     const token = ++generation;
     originalInline = {
@@ -246,7 +324,7 @@
           { clipPath: circleMask(active.revealRadius, revealOrigin) }
         ], { duration, easing, fill: "forwards" }));
       }
-      if (capped) animations.push(grid.animate([{ height: `${geometry.grid.height}px` }, { height: `${targetHeight}px` }], { duration, easing, fill: "forwards" }));
+      animations.push(grid.animate([{ height: `${geometry.grid.height}px` }, { height: `${targetHeight}px` }], { duration, easing, fill: "forwards" }));
     }
     grid.style.height = `${targetHeight}px`;
     active.animations = animations;
@@ -261,66 +339,99 @@
     window.ScrollTrigger?.refresh();
   };
 
-  products.forEach((product, index) => {
+  const categoryNames = { "Kiełbasa": "Ковбаса", "Parówki": "Сосиски", "Przekąska": "Закуска" };
+  const dualText = (tag, className, uk, pl) => {
+    const node = text(tag, className, uk);
+    node.dataset.pl = pl;
+    return node;
+  };
+
+  products.forEach(product => {
     const card = document.createElement("article");
-    card.className = `product-card ${product.size} product-card--photo`.trim();
+    card.className = "product-card";
     card.dataset.productId = product.id;
+    card.dataset.category = product.category;
     card.style.setProperty("--product-color", product.color);
     card.setAttribute("aria-labelledby", `product-name-${product.id}`);
-    const picture = document.createElement("span");
+    const picture = document.createElement("div");
     picture.className = "product-card__image";
-    picture.setAttribute("aria-hidden", "true");
     const artwork = document.createElement("img");
-    artwork.src = `assets/products/serving/${product.id}.webp`;
+    artwork.className = "label-art";
+    artwork.src = product.label;
     artwork.alt = "";
-    artwork.loading = index < 3 ? "eager" : "lazy";
+    artwork.loading = "lazy";
     artwork.decoding = "async";
-    picture.append(artwork);
-    const top = document.createElement("span");
-    top.className = "product-card__top";
-    top.append(text("span", "product-card__number", String(index + 1).padStart(2, "0")), text("span", "product-card__category", product.category));
-    const bottom = document.createElement("span");
+    const servingImage = document.createElement("img");
+    servingImage.className = "serving-art";
+    servingImage.src = `assets/products/serving/${product.id}.webp`;
+    servingImage.alt = "";
+    servingImage.loading = "lazy";
+    servingImage.decoding = "async";
+    picture.append(servingImage, artwork);
+
+    const bottom = document.createElement("div");
     bottom.className = "product-card__bottom";
-    const name = text("span", "product-card__name", product.name);
+    const category = dualText("span", "product-card__category", categoryNames[product.category], product.category);
+    const name = dualText("h3", "product-card__name", product.originalName, product.name);
     name.id = `product-name-${product.id}`;
-    const arrow = text("span", "product-card__arrow", "↗");
-    arrow.setAttribute("aria-hidden", "true");
-    bottom.append(name, arrow);
+    bottom.append(category, name);
     const trigger = document.createElement("button");
     trigger.type = "button";
     trigger.className = "product-card__trigger";
     trigger.setAttribute("aria-expanded", "false");
     trigger.setAttribute("aria-controls", `product-details-${product.id}`);
-    trigger.setAttribute("aria-label", `${product.name}, ${product.category}`);
+    trigger.setAttribute("aria-labelledby", name.id);
     trigger.addEventListener("click", () => open(card, trigger));
+
     const details = document.createElement("div");
     details.className = "product-card__details";
     details.id = `product-details-${product.id}`;
     details.hidden = true;
-    details.setAttribute("aria-labelledby", name.id);
-    details.append(text("p", "product-card__description", product.description), text("p", "product-card__specs", "Szczegóły produktu w przygotowaniu"));
-    const buy = document.createElement("a");
-    buy.className = "product-card__buy";
-    buy.href = "#gdzie-kupic";
-    buy.append(document.createTextNode("Gdzie kupić "), icon("arrow-up-right"));
-    buy.addEventListener("click", event => {
-      event.preventDefault();
-      closeCurrent({ scrollToStore: true });
-    });
-    details.append(buy);
-    const closeButton = document.createElement("button");
+    const caption = dualText("p", "detail-label", "Як подати", "Jak podać");
+    const description = dualText("p", "detail-copy", product.description, product.descriptionPl);
+    const packaging = dualText("p", "detail-label", "Назва на етикетці", "Nazwa na etykiecie");
+    const printedName = text("p", "pack-name", product.labelName || product.originalName);
+    printedName.lang = "uk";
+    details.append(caption, description, packaging, printedName);
+    const closeButton = dualText("button", "product-card__close", "Закрити", "Zamknij");
     closeButton.type = "button";
-    closeButton.className = "product-card__close";
     closeButton.hidden = true;
-    closeButton.setAttribute("aria-label", "Zwiń produkt");
-    closeButton.append(icon("x"));
     closeButton.addEventListener("click", () => closeCurrent());
-    card.append(top, picture, bottom, trigger, details, closeButton);
+    card.append(picture, bottom, trigger, details, closeButton);
     grid.append(card);
     cards.push(card);
   });
-  window.DarnytskieI18n?.translate(grid);
-  window.lucide?.createIcons?.();
+  window.DarnytskieI18n.translate(grid);
+
+  const filters = [...document.querySelectorAll("[data-filter]")];
+  const setFilter = category => {
+    filters.forEach(button => button.setAttribute("aria-pressed", String(button.dataset.filter === category)));
+    cards.forEach(card => { card.hidden = category !== "all" && card.dataset.category !== category; });
+  };
+  let request = 0;
+  const resetExpansion = () => {
+    if (!active) return;
+    ++generation;
+    cancelAnimations(active);
+    clearOwnedGeometry();
+    active = null;
+  };
+  filters.forEach(button => button.addEventListener("click", () => {
+    ++request;
+    resetExpansion();
+    setFilter(button.dataset.filter);
+  }));
+  document.querySelectorAll("[data-show-product]").forEach(button => button.addEventListener("click", () => {
+    const selected = cards.find(card => card.dataset.productId === button.dataset.showProduct);
+    if (!selected) return;
+    const token = ++request;
+    resetExpansion();
+    if (selected.hidden) setFilter("all");
+    grid.scrollIntoView({ behavior: "instant", block: "start" });
+    requestAnimationFrame(() => {
+      if (token === request) open(selected, selected.querySelector(".product-card__trigger"));
+    });
+  }));
 
   document.addEventListener("keydown", event => {
     if (event.key === "Escape" && active && !document.querySelector("#mobile-menu")?.open) {
@@ -346,7 +457,7 @@
       return;
     }
     if (state.phase === "opening") {
-      const targetHeight = window.innerWidth <= 1100 ? Math.min(state.geometry.grid.height, Math.max(520, Math.min(800, window.innerHeight - headerBottom() - 32))) : state.geometry.grid.height;
+      const targetHeight = Math.max(500, Math.min(640, window.innerHeight - headerBottom() - 32));
       grid.style.height = `${targetHeight}px`;
       Object.assign(state.card.style, { left: "0px", top: "0px", width: `${state.geometry.grid.width}px`, height: `${targetHeight}px` });
       for (const item of cards) if (item !== state.card) { item.style.opacity = "0"; item.style.transform = "scale(.9)"; }

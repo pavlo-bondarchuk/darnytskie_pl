@@ -3,21 +3,12 @@
   const toggle = document.querySelector("#menu-toggle");
   const menu = document.querySelector("#mobile-menu");
   const menuClose = document.querySelector("#menu-close");
-  const search = document.querySelector("#store-search");
-  const clearSearch = document.querySelector("#store-search-clear");
-  const mobileQuery = window.matchMedia("(max-width: 68.75rem)");
+  const mobileQuery = window.matchMedia("(max-width: 47.5rem)");
   let menuReturnFocus = null;
   let menuFocusTarget = null;
   let savedOverflow = "";
 
-  const refreshIcons = () => {
-    if (window.lucide?.createIcons) window.lucide.createIcons();
-  };
   const localized = (polish, ukrainian) => window.DarnytskieI18n?.getLanguage() === "uk" ? ukrainian : polish;
-
-  const setHeaderState = () => header?.classList.toggle("is-scrolled", window.scrollY > 28);
-  setHeaderState();
-  window.addEventListener("scroll", setHeaderState, { passive: true });
 
   const updateHeaderOffset = () => {
     if (!header) return;
@@ -78,10 +69,6 @@
   mobileQuery.addEventListener?.("change", event => {
     if (!event.matches && menu?.open) closeMenu();
   });
-  document.addEventListener("darnytskie:languagechange", () => {
-    requestAnimationFrame(() => window.ScrollTrigger?.refresh());
-  });
-
   document.addEventListener("click", event => {
     const link = event.target.closest('a[href^="#"]');
     if (!link || link.matches(".product-card__buy") || menu?.contains(link)) return;
@@ -92,17 +79,6 @@
     target.tabIndex = -1;
     requestAnimationFrame(() => target.focus({ preventScroll: true }));
   });
-
-  if (search && clearSearch) {
-    const updateClear = () => { clearSearch.hidden = !search.value; };
-    search.addEventListener("input", updateClear);
-    clearSearch.addEventListener("click", () => {
-      search.value = "";
-      search.dispatchEvent(new Event("input", { bubbles: true }));
-      search.focus();
-    });
-    updateClear();
-  }
 
   const sections = [...document.querySelectorAll("main section[id]")];
   const navLinks = [...document.querySelectorAll('.desktop-nav a[href^="#"], .mobile-menu__nav a[href^="#"]')];
@@ -127,6 +103,4 @@
     sections.forEach(section => observer.observe(section));
   }
 
-  refreshIcons();
-  window.addEventListener("load", refreshIcons, { once: true });
 })();
