@@ -330,6 +330,22 @@ h2 { font: 500 clamp(2.5rem, 4.4vw, 4.8rem)/1.12 var(--display); letter-spacing:
 .ideas button { min-height: 2.75rem; background: none; color: var(--wine); padding: .55rem 0; border: 0; font-weight: 700; text-align: left; }
 .availability { align-items: center; }
 .locator-panel { width: min(100%, 32rem); padding: 1.3rem 0 1.3rem 1.5rem; border-left: 2px solid var(--wine); }
+.store-addresses { list-style: none; margin: 0; padding: 0; }
+.store-addresses li + li { margin-top: 1.25rem; }
+.store-addresses strong { display: block; margin-bottom: .2rem; color: var(--wine); letter-spacing: .05em; }
+.store-addresses a { text-underline-offset: .22em; text-decoration-color: var(--line); }
+.store-addresses a:hover { text-decoration-color: var(--wine); }
+@media (prefers-reduced-motion: no-preference) {
+  .availability.is-pending :is(.eyebrow, h2, .store-addresses li, #store-locator) { opacity: 0; }
+  .availability.is-revealed .eyebrow { animation: slogan-rise .7s ease-out backwards; }
+  .availability.is-revealed h2 { animation: slogan-rise .7s ease-out .1s backwards, slogan-unveil 1.16s ease-out .1s backwards; }
+  .availability.is-revealed :where(.store-addresses li, #store-locator) { animation: store-rise .8s cubic-bezier(.2,.7,.3,1) .16s backwards; }
+  .availability.is-revealed .store-addresses li + li { animation-delay: .34s; }
+}
+@keyframes store-rise {
+  from { opacity: 0; transform: translateY(1.5rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
 #store-search { width: 100%; margin-block: .5rem; padding: .65rem; border: 1px solid var(--line); }
 #store-results p { margin-top: .75rem; }
 footer { color: var(--paper); background: #41121e; }

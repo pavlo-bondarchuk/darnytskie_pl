@@ -14,7 +14,7 @@
   <link rel="icon" href="assets/logo/logo.svg?v=burgundy-gold" type="image/svg+xml">
   <link rel="preload" as="image" href="assets/logo/logo.svg?v=burgundy-gold">
   <link rel="preload" as="image" href="assets/lifestyle/velvet.webp">
-  <link rel="stylesheet" href="css/style.css?v=20261123-serving-scenes">
+  <link rel="stylesheet" href="css/style.css?v=20261123-store-addresses">
   <script>
     (() => {
       const root = document.documentElement;
@@ -38,7 +38,7 @@
   </script>
   <script defer src="js/i18n.js?v=20261123-detail-title"></script>
   <script defer src="js/products.js?v=20261123-catalog-motion"></script>
-  <script defer src="js/stores.js?v=20261123"></script>
+  <script defer src="js/stores.js?v=20261123-store-addresses"></script>
   <script defer src="js/main.js?v=20261123-serving-scenes"></script>
 </head>
 <body>
@@ -150,7 +150,11 @@
     </section>
     <section id="gdzie-kupic" class="availability wrap" aria-labelledby="locator-title">
       <div><p class="eyebrow"><span class="rule"></span><span data-pl="W Polsce">У Польщі</span></p><h2 id="locator-title" data-pl="Gdzie kupić?">Де купити?</h2></div>
-      <div class="locator-panel"><p id="store-empty" data-pl="Potwierdzamy adresy sklepów. Gdy lista będzie gotowa, znajdziesz ją tutaj.">Уточнюємо адреси магазинів. Щойно підтвердимо точки продажу, список з’явиться тут.</p>
+      <div class="locator-panel">
+        <ul id="store-addresses" class="store-addresses">
+          <li><strong data-pl="ŁÓDŹ">ЛОДЗЬ</strong><a lang="pl" href="https://www.google.com/maps/search/?api=1&amp;query=93-120%20%C5%81%C3%B3d%C5%BA%2C%20ul.%20Przybyszewskiego%20176%2F178%2C%20Polska">93-120 Łódź, ul. Przybyszewskiego 176/178</a></li>
+          <li><strong data-pl="SOSNOWIEC">СОСНОВЕЦ</strong><a lang="pl" href="https://www.google.com/maps/search/?api=1&amp;query=41-219%20Sosnowiec%2C%20ul.%20Kosynier%C3%B3w%2034%2C%20Polska">41-219 Sosnowiec, ul. Kosynierów 34</a></li>
+        </ul>
         <div id="store-locator" hidden><label for="store-search" data-pl="Miasto, sklep lub adres">Місто, магазин або адреса</label><input type="search" id="store-search" aria-controls="store-results"><div id="store-results" role="status" aria-live="polite"></div></div>
       </div>
     </section>
