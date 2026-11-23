@@ -14,14 +14,14 @@
   <link rel="icon" href="assets/logo/logo.svg?v=burgundy-gold" type="image/svg+xml">
   <link rel="preload" as="image" href="assets/logo/logo.svg?v=burgundy-gold">
   <link rel="preload" as="image" href="assets/lifestyle/velvet.webp">
-  <link rel="stylesheet" href="css/style.css?v=20261123-velvet-plate">
+  <link rel="stylesheet" href="css/style.css?v=20261123-slogan-reveal">
   <script>
     (() => {
       const root = document.documentElement;
       root.classList.add("scroll-header");
       const motion = matchMedia("(prefers-reduced-motion: reduce)");
       if (motion.matches) return;
-      const finish = () => root.classList.remove("intro-active");
+      const finish = () => root.classList.replace("intro-active", "intro-reveal");
       root.classList.add("intro-active");
       const deadline = setTimeout(finish, 2300);
       const shine = new Promise(resolve => setTimeout(resolve, 1150));
