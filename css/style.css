@@ -68,10 +68,27 @@ a, button, summary, input { -webkit-tap-highlight-color: transparent; }
   border-bottom: 1px solid var(--line);
   transition: opacity .55s ease, transform .65s cubic-bezier(.2,.7,.25,1);
 }
-.intro-active .site-header { opacity: 0; transform: translateY(-1rem); visibility: hidden; transition: none; }
+.scroll-header .site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  opacity: 0;
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+.scroll-header .site-header.is-visible,
+.scroll-header .site-header:has(:focus-visible) {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.scroll-header.intro-active .site-header {
+  opacity: 0;
+  transform: translateY(-100%);
+  visibility: hidden;
+  transition: none;
+}
 @media (prefers-reduced-motion: reduce) {
   .page-intro, .intro-active .page-intro { display: none; }
-  .intro-active .site-header { opacity: 1; transform: none; visibility: visible; }
 }
 .mast { display: flex; min-height: 4.9rem; justify-content: space-between; align-items: center; gap: 2rem; }
 .brand { display: block; flex: none; }
