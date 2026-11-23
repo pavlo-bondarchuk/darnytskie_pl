@@ -31,7 +31,48 @@ a, button, summary, input { -webkit-tap-highlight-color: transparent; }
 .wrap { width: min(100%, 100rem); margin-inline: auto; padding-inline: var(--gutter); }
 .skip-link { position: fixed; top: 0; left: 1rem; z-index: 20; padding: .75rem; background: white; transform: translateY(-120%); }
 .skip-link:focus { transform: none; }
-.site-header { position: sticky; top: 0; z-index: 9; background: var(--paper); border-bottom: 1px solid var(--line); }
+.page-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  background: rgb(48 7 24 / 84%);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .45s ease, visibility 0s linear .45s;
+}
+.intro-active .page-intro { opacity: 1; visibility: visible; pointer-events: auto; transition: none; }
+.intro-mark { position: relative; width: clamp(9rem, 16vw, 14rem); }
+.intro-mark img { width: 100%; height: auto; filter: brightness(0) invert(.94); }
+.intro-mark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 38%, #e3b05e 47%, #fff7d8 50%, #e3b05e 53%, transparent 62%) 100% 50% / 300% 100% no-repeat;
+  -webkit-mask: url("../assets/logo/logo.svg?v=burgundy-gold") center / contain no-repeat;
+  mask: url("../assets/logo/logo.svg?v=burgundy-gold") center / contain no-repeat;
+}
+.intro-active .intro-mark::after { animation: logo-shine 1s ease-in-out .05s both; }
+@keyframes logo-shine { from { background-position-x: 100%; } to { background-position-x: 0%; } }
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 9;
+  background: rgb(250 246 236 / 84%);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
+  transition: opacity .55s ease, transform .65s cubic-bezier(.2,.7,.25,1);
+}
+.intro-active .site-header { opacity: 0; transform: translateY(-1rem); visibility: hidden; transition: none; }
+@media (prefers-reduced-motion: reduce) {
+  .page-intro, .intro-active .page-intro { display: none; }
+  .intro-active .site-header { opacity: 1; transform: none; visibility: visible; }
+}
 .mast { display: flex; min-height: 4.9rem; justify-content: space-between; align-items: center; gap: 2rem; }
 .brand { display: block; flex: none; }
 .brand img { width: 6.35rem; height: auto; }

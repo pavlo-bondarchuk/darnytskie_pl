@@ -12,13 +12,37 @@
   <meta property="og:image" content="https://pavlo-bondarchuk.github.io/darnytskie_pl/assets/lifestyle/hero.webp">
   <title>Дарницькі вироби — до столу!</title>
   <link rel="icon" href="assets/logo/logo.svg?v=burgundy-gold" type="image/svg+xml">
-  <link rel="stylesheet" href="css/style.css?v=20261123-back-top">
+  <link rel="preload" as="image" href="assets/logo/logo.svg?v=burgundy-gold">
+  <link rel="stylesheet" href="css/style.css?v=20261123-intro">
+  <script>
+    (() => {
+      const motion = matchMedia("(prefers-reduced-motion: reduce)");
+      if (motion.matches) return;
+      const root = document.documentElement;
+      const finish = () => root.classList.remove("intro-active");
+      root.classList.add("intro-active");
+      const deadline = setTimeout(finish, 2300);
+      const shine = new Promise(resolve => setTimeout(resolve, 1150));
+      document.addEventListener("DOMContentLoaded", () => {
+        const images = [document.querySelector(".intro-mark img"), document.querySelector(".hero-image")];
+        Promise.allSettled([shine, ...images.map(image => image?.decode?.())]).then(() => {
+          clearTimeout(deadline);
+          finish();
+        });
+      }, { once: true });
+      window.addEventListener("pageshow", event => { if (event.persisted) finish(); });
+      document.addEventListener("focusin", finish, { once: true });
+    })();
+  </script>
   <script defer src="js/i18n.js?v=20261123-detail-title"></script>
   <script defer src="js/products.js?v=20261123-detail-title"></script>
   <script defer src="js/stores.js?v=20261123"></script>
   <script defer src="js/main.js?v=20261123-back-top"></script>
 </head>
 <body>
+  <div class="page-intro" aria-hidden="true">
+    <div class="intro-mark"><img src="assets/logo/logo.svg?v=burgundy-gold" width="274" height="146" alt=""></div>
+  </div>
   <a class="skip-link" href="#main" data-pl="Przejdź do treści">Перейти до вмісту</a>
   <header class="site-header" id="site-header">
     <div class="mast wrap">
