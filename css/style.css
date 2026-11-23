@@ -193,12 +193,20 @@ h1 em { margin-top: .06em; color: var(--gold); font-size: .96em; }
   flex: none;
   min-width: 104vw;
   align-items: center;
-  justify-content: space-around;
 }
-.ribbon-words span { display: inline-flex; align-items: center; white-space: nowrap; }
+.ribbon-words span {
+  position: relative;
+  flex: 1 0 auto;
+  padding-inline: .65em;
+  text-align: center;
+  white-space: nowrap;
+}
 .ribbon-words span::before {
   content: "•";
-  padding-inline: .65em;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate(-50%, -50%);
   font: 400 .53em/1 sans-serif;
 }
 @media (prefers-reduced-motion: no-preference) {
