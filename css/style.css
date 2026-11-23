@@ -336,7 +336,9 @@ h2 { font: 500 clamp(2.5rem, 4.4vw, 4.8rem)/1.12 var(--display); letter-spacing:
 .ideas details div { padding: 0 1rem 1rem 0; }
 .ideas button { text-decoration: underline; text-underline-offset: .25em; }
 .ideas button { min-height: 2.75rem; background: none; color: var(--wine); padding: .55rem 0; border: 0; font-weight: 700; text-align: left; }
-.availability { align-items: center; }
+.availability { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, min(43%, 32rem)); gap: 0; align-items: center; }
+.locator-mark { --mark-gap: clamp(.9rem, 2vw, 2rem); overflow: hidden; padding-inline-end: var(--mark-gap); }
+.locator-mark img { display: block; width: clamp(5rem, 10vw, 10rem); height: auto; }
 .locator-panel { width: min(100%, 32rem); padding: 1.3rem 0 1.3rem 1.5rem; border-left: 2px solid var(--wine); }
 .store-addresses { list-style: none; margin: 0; padding: 0; }
 .store-addresses li + li { margin-top: 1.25rem; }
@@ -344,11 +346,16 @@ h2 { font: 500 clamp(2.5rem, 4.4vw, 4.8rem)/1.12 var(--display); letter-spacing:
 .store-addresses a { text-underline-offset: .22em; text-decoration-color: var(--line); }
 .store-addresses a:hover { text-decoration-color: var(--wine); }
 @media (prefers-reduced-motion: no-preference) {
-  .availability.is-pending :is(.eyebrow, h2, .store-addresses li, #store-locator) { opacity: 0; }
+  .availability.is-pending :is(.eyebrow, h2, .locator-mark img, .store-addresses li, #store-locator) { opacity: 0; }
   .availability.is-revealed .eyebrow { animation: slogan-rise .7s ease-out backwards; }
   .availability.is-revealed h2 { animation: slogan-rise .7s ease-out .1s backwards, slogan-unveil 1.16s ease-out .1s backwards; }
-  .availability.is-revealed :where(.store-addresses li, #store-locator) { animation: store-rise .8s cubic-bezier(.2,.7,.3,1) .16s backwards; }
+  .availability.is-revealed :where(.locator-mark img, .store-addresses li, #store-locator) { animation: var(--store-motion, store-rise) .8s cubic-bezier(.2,.7,.3,1) .16s backwards; }
+  .locator-mark img { --store-motion: store-logo-slide; }
   .availability.is-revealed .store-addresses li + li { animation-delay: .34s; }
+}
+@keyframes store-logo-slide {
+  from { transform: translateX(calc(100% + var(--mark-gap))); }
+  to { transform: translateX(0); }
 }
 @keyframes store-rise {
   from { opacity: 0; transform: translateY(1.5rem); }
@@ -406,7 +413,11 @@ footer span { font-size: .875rem; }
   .menu-close { display: block; width: 2.75rem; margin-left: auto; font-size: 1.4rem; }
   .mobile-menu__nav { display: grid; }
   .mobile-menu__nav a { font: 500 1.6rem/1.3 var(--display); text-decoration: none; border-bottom: 1px solid var(--line); padding-block: .85rem; }
-  .section-intro, .availability { align-items: flex-start; flex-direction: column; gap: 1rem; }
+  .section-intro { align-items: flex-start; flex-direction: column; gap: 1rem; }
+  .availability { grid-template-columns: auto minmax(0, 1fr); row-gap: 1rem; }
+  .availability > :first-child { grid-column: 1 / -1; }
+  .locator-mark img { width: clamp(3.5rem, 13vw, 5rem); }
+  .locator-panel { width: 100%; padding-inline-start: 1rem; overflow-wrap: anywhere; }
   .intro-note { max-width: 43ch; }
   .product-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .serving-layout { grid-template-columns: 1fr; }
