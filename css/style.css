@@ -115,11 +115,11 @@ a, button, summary, input { -webkit-tap-highlight-color: transparent; }
   filter: drop-shadow(0 .65rem .85rem rgb(24 2 8 / 30%));
 }
 @media (prefers-reduced-motion: no-preference) {
-  .hero-image { transition: transform 1.15s cubic-bezier(.22, .68, .18, 1) .3s; }
+  .hero-image { transition: transform 2.3s cubic-bezier(.22, .68, .18, 1) .6s; }
   .intro-active .hero-image { transform: translateX(50%); transition: none; }
   .intro-active #hero-title > * { opacity: 0; }
-  .intro-reveal #hero-title > span { animation: slogan-rise .35s cubic-bezier(.2,.7,.3,1) backwards; }
-  .intro-reveal #hero-title > em { animation: slogan-unveil .58s ease-out .12s backwards; }
+  .intro-reveal #hero-title > span { animation: slogan-rise .7s cubic-bezier(.2,.7,.3,1) backwards; }
+  .intro-reveal #hero-title > em { animation: slogan-unveil 1.16s ease-out .24s backwards; }
 }
 @keyframes slogan-rise {
   from { opacity: 0; transform: translateY(12px); }
