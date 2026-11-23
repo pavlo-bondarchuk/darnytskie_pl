@@ -40,7 +40,7 @@
   "NASZE PRODUKTY": "НАША ПРОДУКЦІЯ",
   "WYBIERZ PRODUKT, ODKRYJ SMAK": "ОБЕРІТЬ ПРОДУКТ, ВІДКРИЙТЕ СМАК",
   "Zwiń produkt": "Згорнути продукт",
-  "Oryginalne projekty etykiet. Fotografie produktów w przygotowaniu.": "Оригінальні макети етикеток. Фотографії продукції готуються.",
+  "Wizualizacje AI przedstawiają propozycje podania.": "Ідеї сервірування проілюстровано за допомогою ШІ.",
   "Każdy ma swój ulubiony.": "У кожного свій улюблений.",
   "Znajdź blisko siebie": "Знайдіть поруч",
   "O NAS": "ПРО НАС",
