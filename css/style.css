@@ -103,8 +103,23 @@ a, button, summary, input { -webkit-tap-highlight-color: transparent; }
 .languages button { min-width: 2.7rem; min-height: 2.3rem; border: 0; background: transparent; border-radius: inherit; color: var(--ink); font-weight: 700; font-size: .875rem; }
 .languages button[aria-pressed=true] { background: var(--wine); color: var(--paper); }
 .menu-toggle, .mobile-menu:not([open]) { display: none; }
-.hero { position: relative; isolation: isolate; overflow: hidden; background: #41121e; color: var(--paper); }
-.hero-image { position: absolute; z-index: -2; inset: 0 0 0 auto; height: 100%; width: 70%; object-fit: cover; object-position: 57% center; }
+.hero { position: relative; isolation: isolate; overflow: hidden; background: #41121e url("../assets/lifestyle/hero-linen.webp") center / 22rem repeat; color: var(--paper); }
+.hero-image {
+  --plate-position: 57% center;
+  position: absolute;
+  z-index: -2;
+  inset: 0 0 0 auto;
+  height: 100%;
+  width: 70%;
+  object-fit: cover;
+  object-position: var(--plate-position);
+  -webkit-mask: url("../assets/lifestyle/plate-mask.svg") var(--plate-position) / cover no-repeat;
+  mask: url("../assets/lifestyle/plate-mask.svg") var(--plate-position) / cover no-repeat;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-image { transition: transform 1.15s cubic-bezier(.22, .68, .18, 1) .3s; }
+  .intro-active .hero-image { transform: translateX(100%); transition: none; }
+}
 .hero::before { content: ""; position: absolute; z-index: -1; inset: 0; background: linear-gradient(90deg, #41121e 23%, #41121efc 31%, #41121ec7 40%, #41121e44 54%, transparent 68%); }
 .hero-inner { display: flex; align-items: center; min-height: 100vh; min-height: 100dvh; padding-block: clamp(3.25rem, 5vw, 6rem); }
 .hero-copy { max-width: 53%; }
@@ -230,7 +245,7 @@ footer span { font-size: .875rem; }
   .footer-inner { grid-template-columns: auto 1fr; gap: 1rem; padding-right: 5rem; }
 }
 @media (max-width: 42.5rem) {
-  .hero-image { inset: 0 0 auto; width: 100%; height: 55%; object-position: 52% 45%; }
+  .hero-image { inset: 0 0 auto; width: 100%; height: 55%; --plate-position: 52% 45%; }
   .hero::before { background: linear-gradient(0deg, #41121e 44%, #41121ef2 49%, #41121e55 62%, transparent 78%); }
   .hero-inner { padding-top: clamp(12rem, 58vw, 19rem); padding-bottom: 2rem; }
   .hero-copy { max-width: 100%; }
