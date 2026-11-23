@@ -14,7 +14,7 @@
   <link rel="icon" href="assets/logo/logo.svg?v=burgundy-gold" type="image/svg+xml">
   <link rel="preload" as="image" href="assets/logo/logo.svg?v=burgundy-gold">
   <link rel="preload" as="image" href="assets/lifestyle/velvet.webp">
-  <link rel="stylesheet" href="css/style.css?v=20261123-catalog-motion">
+  <link rel="stylesheet" href="css/style.css?v=20261123-serving-scenes">
   <script>
     (() => {
       const root = document.documentElement;
@@ -39,7 +39,7 @@
   <script defer src="js/i18n.js?v=20261123-detail-title"></script>
   <script defer src="js/products.js?v=20261123-catalog-motion"></script>
   <script defer src="js/stores.js?v=20261123"></script>
-  <script defer src="js/main.js?v=20261123-scroll-header"></script>
+  <script defer src="js/main.js?v=20261123-serving-scenes"></script>
 </head>
 <body>
   <div class="page-intro" aria-hidden="true">
@@ -129,16 +129,21 @@
       <p class="catalog-foot" data-pl="Wizualizacje AI przedstawiają propozycje podania. Skład, alergeny i sposób przechowywania sprawdź na opakowaniu wybranego produktu.">ШІ-ілюстрації показують варіанти подачі. Склад, алергени та умови зберігання перевіряйте на пакованні обраного продукту.</p>
     </section>
     <section id="inspiracje" class="serving" aria-labelledby="serving-title">
-      <div class="serving-layout wrap">
-        <figure class="table-photo"><img src="assets/lifestyle/table.webp" srcset="assets/lifestyle/table-900.webp 900w, assets/lifestyle/table.webp 1536w" sizes="(max-width: 760px) 100vw, 45vw" width="1536" height="1024" alt="За столом передають тарілку з хлібом, ковбасою та зеленню" data-pl-alt="Przy stole z rąk do rąk wędruje talerz z kanapkami i zieleniną" loading="lazy"><figcaption data-pl="Propozycja podania">Варіант подачі</figcaption></figure>
+      <div class="serving-layout">
+        <figure class="table-photo">
+          <img id="dish-sandwich" class="is-current" src="assets/lifestyle/table.webp" srcset="assets/lifestyle/table-900.webp 900w, assets/lifestyle/table.webp 1536w" sizes="(max-width: 760px) 100vw, 50vw" width="1536" height="1024" alt="Бутерброди з Вершковою ковбасою, огірком і кропом на житньому хлібі" data-pl-alt="Kanapki na żytnim chlebie z kiełbasą Śmietankową, ogórkiem i koperkiem" loading="lazy">
+          <img id="dish-skillet" src="assets/lifestyle/serving-skillet.webp" width="1120" height="1120" alt="Підрум’янені сосиски з яєчнею, зеленою цибулею та житнім тостом на пательні" data-pl-alt="Parówki z jajkiem sadzonym, szczypiorkiem i żytnią grzanką na patelni" loading="lazy" aria-hidden="true">
+          <img id="dish-platter" src="assets/lifestyle/serving-platter.webp" width="1120" height="1120" alt="Смужки копчених свинячих вух з маринованою цибулею, огірками та хроном" data-pl-alt="Paski wędzonych uszu wieprzowych z marynowaną cebulką, ogórkami i chrzanem" loading="lazy" aria-hidden="true">
+          <figcaption data-pl="Propozycja podania">Варіант подачі</figcaption>
+        </figure>
         <div class="serving-copy" id="o-nas">
           <p class="eyebrow"><span class="rule"></span><span data-pl="Przy stole z Darnytskie">До столу з Дарницькими</span></p>
           <h2 id="serving-title"><span data-pl="Co dziś">Що сьогодні</span> <em data-pl="podajemy?">подаємо?</em></h2>
           <p data-pl="W ukraińskiej kuchni dla jeszcze jednej osoby zawsze znajdzie się kromka chleba. Oto trzy pomysły na to, co na niej położyć albo podać obok.">На українському столі завжди знайдеться скибка хліба для когось іще. Ось три ідеї, що покласти на неї або подати поруч.</p>
           <div class="ideas">
-            <details open><summary data-pl="Kanapka z chrupiącym ogórkiem">Бутерброд із хрумким огірком</summary><div><p data-pl="Posmaruj żytni chleb musztardą. Dodaj plasterki Śmietankowej, kiszony ogórek i kilka gałązek koperku.">Змастіть житній хліб гірчицею. Додайте скибки Вершкової, солоний огірок і кілька гілочок кропу.</p><button type="button" data-show-product="vershkova" data-pl="Zobacz Śmietankową">Переглянути Вершкову</button></div></details>
-            <details><summary data-pl="Śniadanie prosto z patelni">Сніданок просто з пательні</summary><div><p data-pl="Przygotuj parówki zgodnie z instrukcją na opakowaniu. Podaj z jajkiem sadzonym, szczypiorkiem i ciepłą grzanką.">Приготуйте сосиски за інструкцією на пакованні. Подайте з яєчнею, зеленою цибулею та теплим тостом.</p><button type="button" data-show-product="parowki" data-pl="Zobacz Parówki Doktorskie">Переглянути сосиски Докторські</button></div></details>
-            <details><summary data-pl="Na półmisku dla gości">Закуска на спільній тарілці</summary><div><p data-pl="Do wędzonych uszu wieprzowych podaj marynowaną cebulkę, ogórki i chrzan w małej miseczce. Pieczywo połóż obok, żeby każdy mógł sięgnąć po kromkę.">До копчених свинячих вух подайте мариновану цибульку, огірки й хрін у невеликій мисці. Хліб поставте поруч, щоб кожен міг узяти скибку.</p><button type="button" data-show-product="uszka-wedzone" data-pl="Zobacz wędzone uszy wieprzowe">Переглянути копчені вуха</button></div></details>
+            <details name="serving-ideas" data-photo="dish-sandwich" open><summary data-pl="Kanapka z chrupiącym ogórkiem">Бутерброд із хрумким огірком</summary><div><p data-pl="Posmaruj żytni chleb musztardą. Dodaj plasterki Śmietankowej, kiszony ogórek i kilka gałązek koperku.">Змастіть житній хліб гірчицею. Додайте скибки Вершкової, солоний огірок і кілька гілочок кропу.</p><button type="button" data-show-product="vershkova" data-pl="Zobacz Śmietankową">Переглянути Вершкову</button></div></details>
+            <details name="serving-ideas" data-photo="dish-skillet"><summary data-pl="Śniadanie prosto z patelni">Сніданок просто з пательні</summary><div><p data-pl="Przygotuj parówki zgodnie z instrukcją na opakowaniu. Podaj z jajkiem sadzonym, szczypiorkiem i ciepłą grzanką.">Приготуйте сосиски за інструкцією на пакованні. Подайте з яєчнею, зеленою цибулею та теплим тостом.</p><button type="button" data-show-product="parowki" data-pl="Zobacz Parówki Doktorskie">Переглянути сосиски Докторські</button></div></details>
+            <details name="serving-ideas" data-photo="dish-platter"><summary data-pl="Na półmisku dla gości">Закуска на спільній тарілці</summary><div><p data-pl="Do wędzonych uszu wieprzowych podaj marynowaną cebulkę, ogórki i chrzan w małej miseczce. Pieczywo połóż obok, żeby każdy mógł sięgnąć po kromkę.">До копчених свинячих вух подайте мариновану цибульку, огірки й хрін у невеликій мисці. Хліб поставте поруч, щоб кожен міг узяти скибку.</p><button type="button" data-show-product="uszka-wedzone" data-pl="Zobacz wędzone uszy wieprzowe">Переглянути копчені вуха</button></div></details>
           </div>
         </div>
       </div>

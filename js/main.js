@@ -80,6 +80,39 @@
     requestAnimationFrame(() => target.focus({ preventScroll: true }));
   });
 
+  const servingTitle = document.getElementById("serving-title");
+  if (servingTitle && "IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    servingTitle.classList.add("is-pending");
+    const reveal = new IntersectionObserver(entries => {
+      if (!entries.some(entry => entry.isIntersecting)) return;
+      servingTitle.classList.replace("is-pending", "is-revealed");
+      reveal.disconnect();
+    }, { threshold: .2 });
+    reveal.observe(servingTitle);
+  }
+
+  const recipes = [...document.querySelectorAll(".ideas details[data-photo]")];
+  const selectRecipe = selected => {
+    for (const recipe of recipes) {
+      const current = recipe === selected;
+      recipe.open = current;
+      recipe.querySelector("summary").setAttribute("aria-disabled", String(current));
+      const image = document.getElementById(recipe.dataset.photo);
+      image.classList.toggle("is-current", current);
+      image.setAttribute("aria-hidden", String(!current));
+    }
+  };
+  for (const recipe of recipes) {
+    recipe.querySelector("summary").addEventListener("click", event => {
+      event.preventDefault();
+      selectRecipe(recipe);
+    });
+    recipe.addEventListener("toggle", () => {
+      if (recipe.open) selectRecipe(recipe);
+    });
+  }
+  if (recipes.length) selectRecipe(recipes.find(recipe => recipe.open) || recipes[0]);
+
   const backToTop = document.getElementById("back-to-top");
   const updateScrollControls = () => {
     header?.classList.toggle("is-visible", window.scrollY >= 32);
