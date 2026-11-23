@@ -355,12 +355,6 @@
     card.setAttribute("aria-labelledby", `product-name-${product.id}`);
     const picture = document.createElement("div");
     picture.className = "product-card__image";
-    const artwork = document.createElement("img");
-    artwork.className = "label-art";
-    artwork.src = product.label;
-    artwork.alt = "";
-    artwork.loading = "lazy";
-    artwork.decoding = "async";
     const servingImage = document.createElement("img");
     servingImage.className = "serving-art";
     servingImage.src = `assets/products/serving/${product.id}.webp`;
@@ -389,13 +383,7 @@
     details.hidden = true;
     const caption = dualText("p", "detail-label", "Як подати", "Jak podać");
     const description = dualText("p", "detail-copy", product.description, product.descriptionPl);
-    const packaging = dualText("p", "detail-label", "Назва на етикетці", "Nazwa na etykiecie");
-    const printedName = text("p", "pack-name", product.labelName || product.originalName);
-    printedName.lang = "uk";
-    const packInfo = document.createElement("div");
-    packInfo.className = "pack-info";
-    packInfo.append(packaging, printedName, artwork);
-    details.append(caption, description, packInfo);
+    details.append(caption, description);
     const closeButton = dualText("button", "product-card__close", "Закрити", "Zamknij");
     closeButton.type = "button";
     closeButton.hidden = true;

@@ -19,7 +19,7 @@
     document.documentElement.lang = language;
     translate();
     const title = language === "uk" ? "Дарницькі вироби — до столу!" : "Darnytskie Wyroby — do stołu!";
-    const description = language === "uk" ? "Ковбаси, сосиски й закуски «Дарницькі вироби». Впізнайте продукт за етикеткою та виберіть, з чим його подати." : "Kiełbasy, parówki i przekąski Darnytskie. Rozpoznaj produkt po etykiecie i wybierz pomysł na podanie.";
+    const description = language === "uk" ? "Ковбаси, сосиски й закуски «Дарницькі вироби». Оберіть продукт і знайдіть ідею для подачі." : "Kiełbasy, parówki i przekąski Darnytskie. Wybierz produkt i znajdź pomysł na podanie.";
     document.title = title;
     document.querySelector('[property="og:title"]').content = title;
     document.querySelector('[name="description"]').content = description;

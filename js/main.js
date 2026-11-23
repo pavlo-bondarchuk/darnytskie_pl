@@ -80,6 +80,19 @@
     requestAnimationFrame(() => target.focus({ preventScroll: true }));
   });
 
+  const backToTop = document.getElementById("back-to-top");
+  if (backToTop) {
+    const updateBackToTop = () => {
+      const visible = window.scrollY >= window.innerHeight;
+      backToTop.classList.toggle("is-visible", visible);
+      backToTop.inert = !visible;
+    };
+    window.addEventListener("scroll", updateBackToTop, { passive: true });
+    window.addEventListener("resize", updateBackToTop);
+    window.addEventListener("pageshow", updateBackToTop);
+    updateBackToTop();
+  }
+
   const sections = [...document.querySelectorAll("main section[id]")];
   const navLinks = [...document.querySelectorAll('.desktop-nav a[href^="#"], .mobile-menu__nav a[href^="#"]')];
   const activeLinks = new Map();
