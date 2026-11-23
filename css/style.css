@@ -48,6 +48,14 @@ a, button, summary, input { -webkit-tap-highlight-color: transparent; }
   transition: opacity .45s ease, visibility 0s linear .45s;
 }
 .intro-active .page-intro { opacity: 1; visibility: visible; pointer-events: auto; transition: none; }
+.scroll-header:not(.intro-pending) .page-intro { display: none; }
+.intro-pending .page-intro { pointer-events: auto; }
+@media (prefers-reduced-motion: no-preference) {
+  .intro-pending .hero-image { transform: translateX(50%); }
+  .intro-pending #hero-title > span { transform: translateY(.35em); }
+  .intro-pending #hero-title > em { transform: translateX(.14em); opacity: .85; }
+}
+.intro-pending :is(main, header, footer) * { transition-duration: 0s !important; }
 .intro-mark { position: relative; width: clamp(9rem, 16vw, 14rem); }
 .intro-mark img { width: 100%; height: auto; filter: brightness(0) invert(.94); }
 .intro-mark::after {
@@ -83,7 +91,7 @@ a, button, summary, input { -webkit-tap-highlight-color: transparent; }
   transform: translateY(0);
   pointer-events: auto;
 }
-.scroll-header.intro-active .site-header {
+.scroll-header.intro-pending .site-header, .intro-pending .back-to-top {
   opacity: 0;
   transform: translateY(-100%);
   visibility: hidden;
@@ -115,25 +123,6 @@ a, button, summary, input { -webkit-tap-highlight-color: transparent; }
   object-fit: contain;
   object-position: center;
   filter: drop-shadow(0 .65rem .85rem rgb(24 2 8 / 30%));
-}
-@media (prefers-reduced-motion: no-preference) {
-  .hero-image { transition: transform 2.3s cubic-bezier(.22, .68, .18, 1) .6s; }
-  .intro-active .hero-image { transform: translateX(50%); transition: none; }
-  .intro-active #hero-title > * { opacity: 0; }
-  .intro-reveal #hero-title > span { animation: slogan-rise .7s cubic-bezier(.2,.7,.3,1) backwards; }
-  .intro-reveal #hero-title > em { animation: slogan-unveil 1.16s ease-out .24s backwards; }
-}
-@keyframes slogan-rise {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes slogan-unveil {
-  from, to {
-    -webkit-mask: linear-gradient(110deg, #000 42%, transparent 58%) 0% 50% / 300% 100% no-repeat;
-    mask: linear-gradient(110deg, #000 42%, transparent 58%) 0% 50% / 300% 100% no-repeat;
-  }
-  from { -webkit-mask-position: 100% 50%; mask-position: 100% 50%; }
-  to { -webkit-mask-position: 0% 50%; mask-position: 0% 50%; }
 }
 .hero-inner { display: flex; align-items: center; min-height: calc(100vh - var(--ribbon-space)); min-height: calc(100svh - var(--ribbon-space)); padding-block: clamp(2rem, 4.7vh, 6rem); }
 @supports (height: 100svh) {
@@ -209,12 +198,6 @@ h1 em { margin-top: .06em; color: var(--gold); font-size: .96em; }
   transform: translate(-50%, -50%);
   font: 400 .53em/1 sans-serif;
 }
-@media (prefers-reduced-motion: no-preference) {
-  .ribbon-track { animation: ribbon-slide 40s linear infinite; }
-  .ribbon + .ribbon .ribbon-track { animation-direction: reverse; }
-  .ribbon-pause:checked ~ .ribbon-bands .ribbon-track { animation-play-state: paused; }
-}
-@keyframes ribbon-slide { to { transform: translateX(-50%); } }
 .ribbon-pause {
   pointer-events: auto;
   position: absolute;
@@ -288,11 +271,6 @@ h2 { font: 500 clamp(2.5rem, 4.4vw, 4.8rem)/1.12 var(--display); letter-spacing:
   }
 }
 .product-card__surface { display: contents; }
-@media (prefers-reduced-motion: no-preference) {
-  .catalog-intro-ready :is(.eyebrow, h2) { opacity: 0; }
-  .catalog-intro-reveal .eyebrow { animation: slogan-rise .7s cubic-bezier(.2,.7,.3,1) backwards; }
-  .catalog-intro-reveal h2 { animation: slogan-rise .7s cubic-bezier(.2,.7,.3,1) .12s backwards, slogan-unveil 1.16s ease-out .12s backwards; }
-}
 .product-card__bottom { position: relative; padding: .95rem 2.85rem 1.25rem 1rem; }
 .product-card__category, .detail-label { color: var(--wine); text-transform: uppercase; letter-spacing: .055em; font-size: .875rem; font-weight: 700; }
 .product-card__name { font: 500 clamp(1.42rem, 1.9vw, 2.1rem)/1.15 var(--display); letter-spacing: -.018em; margin-top: .28rem; }
@@ -321,11 +299,6 @@ h2 { font: 500 clamp(2.5rem, 4.4vw, 4.8rem)/1.12 var(--display); letter-spacing:
 }
 .serving h2 em { color: var(--wine); }
 #serving-title > * { display: inline-block; }
-@media (prefers-reduced-motion: no-preference) {
-  #serving-title.is-pending > * { opacity: 0; }
-  #serving-title.is-revealed > span { animation: slogan-rise .7s cubic-bezier(.2,.7,.3,1) backwards; }
-  #serving-title.is-revealed > em { animation: slogan-unveil 1.16s ease-out .24s backwards; }
-}
 .serving-copy > p:not(.eyebrow) { max-width: 45ch; margin: 1.15rem 0 1.65rem; }
 .ideas { border-top: 1px solid #c5b5a0; }
 .ideas details { border-bottom: 1px solid #c5b5a0; }
@@ -345,22 +318,6 @@ h2 { font: 500 clamp(2.5rem, 4.4vw, 4.8rem)/1.12 var(--display); letter-spacing:
 .store-addresses strong { display: block; margin-bottom: .2rem; color: var(--wine); letter-spacing: .05em; }
 .store-addresses a { text-underline-offset: .22em; text-decoration-color: var(--line); }
 .store-addresses a:hover { text-decoration-color: var(--wine); }
-@media (prefers-reduced-motion: no-preference) {
-  .availability.is-pending :is(.eyebrow, h2, .locator-mark img, .store-addresses li, #store-locator) { opacity: 0; }
-  .availability.is-revealed .eyebrow { animation: slogan-rise .7s ease-out backwards; }
-  .availability.is-revealed h2 { animation: slogan-rise .7s ease-out .1s backwards, slogan-unveil 1.16s ease-out .1s backwards; }
-  .availability.is-revealed :where(.locator-mark img, .store-addresses li, #store-locator) { animation: var(--store-motion, store-rise) .8s cubic-bezier(.2,.7,.3,1) .16s backwards; }
-  .locator-mark img { --store-motion: store-logo-slide; }
-  .availability.is-revealed .store-addresses li + li { animation-delay: .34s; }
-}
-@keyframes store-logo-slide {
-  from { transform: translateX(calc(100% + var(--mark-gap))); }
-  to { transform: translateX(0); }
-}
-@keyframes store-rise {
-  from { opacity: 0; transform: translateY(1.5rem); }
-  to { opacity: 1; transform: translateY(0); }
-}
 #store-search { width: 100%; margin-block: .5rem; padding: .65rem; border: 1px solid var(--line); }
 #store-results p { margin-top: .75rem; }
 footer { color: var(--paper); background: #41121e; }
@@ -393,6 +350,18 @@ footer .brand img { filter: brightness(0) invert(1); }
   pointer-events: auto;
   transform: none;
   transition-delay: 0s;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .scroll-motion .site-header:not(:has(:focus-visible)) {
+    opacity: var(--header-progress, 0);
+    transform: translateY(calc((var(--header-progress, 0) - 1) * 100%));
+    transition: none;
+  }
+  .scroll-motion .back-to-top {
+    opacity: var(--top-progress, 0);
+    transform: translateY(calc((1 - var(--top-progress, 0)) * .5rem));
+    transition: none;
+  }
 }
 @media (hover: hover) {
   .back-to-top:hover { background: #481322; color: var(--gold); }

@@ -80,17 +80,6 @@
     requestAnimationFrame(() => target.focus({ preventScroll: true }));
   });
 
-  const servingTitle = document.getElementById("serving-title");
-  if (servingTitle && "IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    servingTitle.classList.add("is-pending");
-    const reveal = new IntersectionObserver(entries => {
-      if (!entries.some(entry => entry.isIntersecting)) return;
-      servingTitle.classList.replace("is-pending", "is-revealed");
-      reveal.disconnect();
-    }, { threshold: .2 });
-    reveal.observe(servingTitle);
-  }
-
   const recipes = [...document.querySelectorAll(".ideas details[data-photo]")];
   const selectRecipe = selected => {
     for (const recipe of recipes) {

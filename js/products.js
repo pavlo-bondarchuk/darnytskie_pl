@@ -147,16 +147,6 @@
   grid.addEventListener("pointercancel", clearTilt);
   window.addEventListener("blur", clearTilt);
   hoverMotion.addEventListener("change", clearTilt);
-  const heading = document.querySelector(".catalog .section-intro > div");
-  if (heading && "IntersectionObserver" in window && !motionQuery.matches) {
-    heading.classList.add("catalog-intro-ready");
-    const observer = new IntersectionObserver(entries => {
-      if (!entries.some(entry => entry.isIntersecting)) return;
-      heading.classList.replace("catalog-intro-ready", "catalog-intro-reveal");
-      observer.disconnect();
-    }, { threshold: .15 });
-    observer.observe(heading);
-  }
   const duration = 720;
   const easing = "cubic-bezier(.2,.8,.2,1)";
   let active = null;

@@ -1,16 +1,6 @@
 (() => {
   window.STORES = Array.isArray(window.STORES) ? window.STORES : [];
   const stores = window.STORES.filter(store => store?.verified === true && store.name?.trim() && store.city?.trim() && store.address?.trim());
-  const section = document.querySelector(".availability");
-  if (section && "IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    section.classList.add("is-pending");
-    const reveal = new IntersectionObserver(entries => {
-      if (!entries.some(entry => entry.isIntersecting)) return;
-      section.classList.replace("is-pending", "is-revealed");
-      reveal.disconnect();
-    }, { threshold: .12 });
-    reveal.observe(section);
-  }
   if (!stores.length) return;
   const search = document.querySelector("#store-search");
   const results = document.querySelector("#store-results");

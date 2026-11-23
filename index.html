@@ -14,15 +14,33 @@
   <link rel="icon" href="assets/logo/logo.svg?v=burgundy-gold" type="image/svg+xml">
   <link rel="preload" as="image" href="assets/logo/logo.svg?v=burgundy-gold">
   <link rel="preload" as="image" href="assets/lifestyle/velvet.webp">
-  <link rel="stylesheet" href="css/style.css?v=20261123-locator-logo">
+  <link rel="stylesheet" href="css/style.css?v=20261123-scroll-motion">
   <script>
     (() => {
       const root = document.documentElement;
       root.classList.add("scroll-header");
       const motion = matchMedia("(prefers-reduced-motion: reduce)");
       if (motion.matches) return;
-      const finish = () => root.classList.replace("intro-active", "intro-reveal");
-      root.classList.add("intro-active");
+      const ready = () => {
+        root.classList.remove("intro-pending");
+        document.dispatchEvent(new Event("darnytskie:ready"));
+      };
+      const finish = () => {
+        if (!root.classList.contains("intro-active")) return;
+        root.classList.remove("intro-active");
+        const overlay = document.querySelector(".page-intro");
+        const complete = () => {
+          if (!root.classList.contains("intro-pending")) return;
+          overlay?.removeEventListener("transitionend", onEnd);
+          ready();
+        };
+        const onEnd = event => {
+          if (event.target === overlay && event.propertyName === "opacity") complete();
+        };
+        overlay?.addEventListener("transitionend", onEnd);
+        setTimeout(complete, 500);
+      };
+      root.classList.add("intro-active", "intro-pending");
       const deadline = setTimeout(finish, 2300);
       const shine = new Promise(resolve => setTimeout(resolve, 1150));
       document.addEventListener("DOMContentLoaded", () => {
@@ -37,9 +55,10 @@
     })();
   </script>
   <script defer src="js/i18n.js?v=20261123-detail-title"></script>
-  <script defer src="js/products.js?v=20261123-catalog-motion"></script>
-  <script defer src="js/stores.js?v=20261123-store-addresses"></script>
-  <script defer src="js/main.js?v=20261123-serving-scenes"></script>
+  <script defer src="js/products.js?v=20261123-scroll-motion"></script>
+  <script defer src="js/stores.js?v=20261123-scroll-motion"></script>
+  <script defer src="js/scroll-motion.js?v=20261123-scroll-motion"></script>
+  <script defer src="js/main.js?v=20261123-scroll-motion"></script>
 </head>
 <body>
   <div class="page-intro" aria-hidden="true">
