@@ -8,7 +8,7 @@ Saved: `assets/lifestyle/hero.webp`, `assets/lifestyle/hero-900.webp`.
 
 Prompt:
 
-Use case: photorealistic-natural. Asset type: temporary illustrative food photography for a modern Ukrainian sausage brand HTML prototype, NOT a photo of its actual products. Create a luxury editorial food still life photographed from directly overhead: a large round warm ivory ceramic plate with beautiful folded pale pink cooked sausage slices, a short unbranded cylindrical cooked sausage with cut face, rustic rye sourdough, a few pickles, dill sprigs, mustard in tiny ceramic bowl. Main arrangement occupies right two thirds, left third is clear deep burgundy #810C2B tablecloth with gentle tactile fabric grain. Rich natural directional studio lighting, appetizing realistic food textures, dramatic restrained gastronomy campaign art direction. No packaging, no logos, no letters, no text, no watermark. Wide landscape 3:2 image; plate almost fills height. The whole image should feel tactile, warm, premium and culinary, not stock generic buffet.
+Edit the existing 3:2 hero photograph. Place three flat, hand-cut sausage rounds about 4–5 mm thick in front of the cut end of the cooked sausage. Match the diameter, pink color and fine grain of the exposed cross-section. Let the rounds overlap slightly and rest on the plate with natural contact shadows. Keep the ivory plate on the right, burgundy textile on the left, rye bread, gherkins, mustard, dill and soft window light. No lettering or packaging.
 
 ## Shared table
 
