@@ -106,7 +106,7 @@ a, button, summary, input { -webkit-tap-highlight-color: transparent; }
 .hero { position: relative; isolation: isolate; overflow: hidden; background: #41121e; color: var(--paper); }
 .hero-image { position: absolute; z-index: -2; inset: 0 0 0 auto; height: 100%; width: 70%; object-fit: cover; object-position: 57% center; }
 .hero::before { content: ""; position: absolute; z-index: -1; inset: 0; background: linear-gradient(90deg, #41121e 23%, #41121efc 31%, #41121ec7 40%, #41121e44 54%, transparent 68%); }
-.hero-inner { display: flex; align-items: center; min-height: clamp(31rem, 40vw, 43rem); padding-block: clamp(3.25rem, 5vw, 6rem); }
+.hero-inner { display: flex; align-items: center; min-height: 100vh; min-height: 100dvh; padding-block: clamp(3.25rem, 5vw, 6rem); }
 .hero-copy { max-width: 53%; }
 .eyebrow { display: flex; gap: .75rem; align-items: center; margin: 0 0 1rem; color: var(--wine); font-weight: 700; font-size: .875rem; letter-spacing: .085em; text-transform: uppercase; }
 .rule { width: 2rem; height: 2px; background: currentColor; flex: none; }
@@ -232,7 +232,7 @@ footer span { font-size: .875rem; }
 @media (max-width: 42.5rem) {
   .hero-image { inset: 0 0 auto; width: 100%; height: 55%; object-position: 52% 45%; }
   .hero::before { background: linear-gradient(0deg, #41121e 44%, #41121ef2 49%, #41121e55 62%, transparent 78%); }
-  .hero-inner { min-height: 0; padding-top: clamp(12rem, 58vw, 19rem); padding-bottom: 2rem; }
+  .hero-inner { padding-top: clamp(12rem, 58vw, 19rem); padding-bottom: 2rem; }
   .hero-copy { max-width: 100%; }
   h1 { font-size: clamp(3.05rem, 11vw, 4.5rem); }
   .hero-eyebrow { margin-bottom: .65rem; }
