@@ -396,7 +396,7 @@
     picture.className = "product-card__image";
     const servingImage = document.createElement("img");
     servingImage.className = "serving-art";
-    servingImage.src = new URL(`assets/products/serving/${product.id}.webp`, siteRoot).href;
+    servingImage.src = new URL(`assets/products/serving/${product.id}.webp?v=wrap-2`, siteRoot).href;
     servingImage.alt = "";
     servingImage.loading = "lazy";
     servingImage.decoding = "async";
@@ -412,7 +412,7 @@
     const servingButton = dualText("button", "view-serving", "На столі", "Na stole");
     const packButton = dualText("button", "view-pack", "У пакованні", "W opakowaniu");
     const setView = showPack => {
-      if (showPack && !pack.hasAttribute("src")) pack.src = new URL(`assets/products/packs/${product.id}.webp`, siteRoot).href;
+      if (showPack && !pack.hasAttribute("src")) pack.src = new URL(`assets/products/packs/${product.id}.webp?v=wrap-2`, siteRoot).href;
       card.classList.toggle("shows-pack", showPack);
       servingButton.setAttribute("aria-pressed", String(!showPack));
       packButton.setAttribute("aria-pressed", String(showPack));
