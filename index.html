@@ -5,16 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#491320">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="description" content="Ковбаси, сосиски й закуски «Дарницькі вироби». Оберіть продукт і знайдіть ідею для подачі.">
+  <meta name="description" content="Ковбаси, сосиски й закуски «Дарницькі вироби». Перегляньте продукти й адреси магазинів у Лодзі та Сосновці.">
   <meta property="og:title" content="Дарницькі вироби — до столу!">
-  <meta property="og:description" content="Ковбаси, сосиски й закуски. Каталог та ідеї подачі українською й польською.">
+  <meta property="og:description" content="Ковбаси, сосиски й закуски «Дарницькі вироби». Перегляньте продукти й адреси магазинів у Лодзі та Сосновці.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://pavlo-bondarchuk.github.io/darnytskie_pl/assets/lifestyle/hero.webp?v=rounds">
   <title>Дарницькі вироби — до столу!</title>
   <link rel="icon" href="assets/logo/logo.svg?v=burgundy-gold" type="image/svg+xml">
   <link rel="preload" as="image" href="assets/logo/logo.svg?v=burgundy-gold">
   <link rel="preload" as="image" href="assets/lifestyle/velvet.webp">
-  <link rel="stylesheet" href="css/style.css?v=20261123-viewport-reveal">
+  <link rel="stylesheet" href="css/style.css?v=store-journey-1">
   <script>
     (() => {
       const root = document.documentElement;
@@ -54,11 +54,12 @@
       document.addEventListener("focusin", finish, { once: true });
     })();
   </script>
-  <script defer src="js/i18n.js?v=20261123-detail-title"></script>
-  <script defer src="js/products.js?v=20261123-viewport-reveal"></script>
-  <script defer src="js/stores.js?v=20261123-viewport-reveal"></script>
-  <script defer src="js/scroll-motion.js?v=20261123-viewport-reveal"></script>
-  <script defer src="js/main.js?v=20261123-viewport-reveal"></script>
+  <script defer src="js/i18n.js?v=store-journey-1"></script>
+  <script defer src="js/analytics.js?v=store-journey-1"></script>
+  <script defer src="js/products.js?v=store-journey-1"></script>
+  <script defer src="js/stores.js?v=store-journey-1"></script>
+  <script defer src="js/scroll-motion.js?v=store-journey-1"></script>
+  <script defer src="js/main.js?v=store-journey-1"></script>
 </head>
 <body>
   <div class="page-intro" aria-hidden="true">
@@ -69,7 +70,7 @@
     <div class="mast wrap">
       <a class="brand" href="#start"><img src="assets/logo/logo.svg?v=burgundy-gold" width="274" height="146" alt="Дарницькі вироби" data-pl-alt="Darnytskie Wyroby"></a>
       <nav class="desktop-nav" aria-label="Основна навігація" data-pl-aria="Nawigacja główna">
-        <a href="#produkty" data-pl="Produkty">Продукти</a><a href="#inspiracje" data-pl="Pomysły na stół">Ідеї до столу</a><a href="#gdzie-kupic" data-pl="Gdzie kupić">Де купити</a>
+        <a href="#produkty" data-pl="Produkty">Продукти</a><a href="#inspiracje" data-pl="Pomysły na stół">Ідеї до столу</a><a href="#gdzie-kupic" data-store-source="navigation" data-pl="Gdzie kupić">Де купити</a>
       </nav>
       <div class="header-tools">
         <div class="languages" role="group" aria-label="Мова" data-pl-aria="Język"><button type="button" lang="uk" data-language="uk" aria-pressed="true" aria-label="Українська">УКР</button><button type="button" lang="pl" data-language="pl" aria-pressed="false" aria-label="Polski">PL</button></div>
@@ -79,7 +80,7 @@
   </header>
   <dialog class="mobile-menu" id="mobile-menu" aria-label="Меню" data-pl-aria="Menu">
     <button class="menu-close" id="menu-close" aria-label="Закрити меню" data-pl-aria="Zamknij menu">×</button>
-    <nav class="mobile-menu__nav"><a href="#produkty" data-pl="Produkty">Продукти</a><a href="#inspiracje" data-pl="Pomysły na stół">Ідеї до столу</a><a href="#gdzie-kupic" data-pl="Gdzie kupić">Де купити</a></nav>
+    <nav class="mobile-menu__nav"><a href="#produkty" data-pl="Produkty">Продукти</a><a href="#inspiracje" data-pl="Pomysły na stół">Ідеї до столу</a><a href="#gdzie-kupic" data-store-source="navigation" data-pl="Gdzie kupić">Де купити</a></nav>
   </dialog>
   <main id="main" tabindex="-1">
     <section id="start" class="hero" aria-labelledby="hero-title">
@@ -89,10 +90,13 @@
           <p class="eyebrow hero-eyebrow"><span class="rule"></span><span data-pl="Ukraińskie smaki">Українські смаки</span></p>
           <h1 id="hero-title"><span data-pl="Smak,">Смак,</span> <em data-pl="który&nbsp;łączy.">що&nbsp;об’єднує.</em></h1>
           <p class="hero-desc" data-pl="Kilka plasterków na kanapkę, parówki na śniadanie albo przekąska dla gości. Co dziś podasz na stół?">Кілька скибок на бутерброд, сосиски до сніданку чи закуска для гостей. Що сьогодні на вашому столі?</p>
-          <a class="primary" href="#produkty">
+          <div class="hero-actions">
+            <a class="primary" href="#produkty">
             <span data-pl="Zobacz produkty">Переглянути продукти</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v15m-7-7 7 7 7-7"/></svg>
-          </a>
+            </a>
+            <a class="hero-stores" href="#gdzie-kupic" data-store-source="hero" data-pl="Sklepy w Polsce">Магазини в Польщі</a>
+          </div>
         </div>
       </div>
       <span class="photo-caption" data-pl="Propozycja podania">Варіант подачі</span>
@@ -147,7 +151,7 @@
         <button type="button" data-filter="all" data-pl="Wszystkie" aria-pressed="true">Усі</button><button type="button" data-filter="Kiełbasa" data-pl="Kiełbasy" aria-pressed="false">Ковбаси</button><button type="button" data-filter="Parówki" data-pl="Parówki" aria-pressed="false">Сосиски</button><button type="button" data-filter="Przekąska" data-pl="Przekąski" aria-pressed="false">Закуски</button>
       </div>
       <div class="product-grid" id="product-grid" role="group" aria-labelledby="products-title"></div>
-      <noscript><p>Вершкова · Докторська · Студентська · Гота · Докторська Преміум · Докторська Екстра · Копчені свинячі вуха · Сосиски Докторські · Молочна · Олів’є</p></noscript>
+      <noscript><p data-pl="Śmietankowa · Doktorska · Studencka · Gota · Doktorska Premium · Doktorska Extra · Wędzone uszy wieprzowe · Parówki Doktorskie · Mleczna · Olivier">Вершкова · Докторська · Студентська · Гота · Докторська Преміум · Докторська Екстра · Копчені свинячі вуха · Сосиски Докторські · Молочна · Олів’є</p></noscript>
       <p class="catalog-foot" data-pl="Wizualizacje AI przedstawiają propozycje podania. Skład, alergeny i sposób przechowywania sprawdź na opakowaniu wybranego produktu.">ШІ-ілюстрації показують варіанти подачі. Склад, алергени та умови зберігання перевіряйте на пакованні обраного продукту.</p>
     </section>
     <section id="inspiracje" class="serving" aria-labelledby="serving-title">
@@ -175,8 +179,8 @@
       <div class="locator-mark" aria-hidden="true"><img src="assets/logo/logo.svg?v=burgundy-gold" width="274" height="146" alt=""></div>
       <div class="locator-panel">
         <ul id="store-addresses" class="store-addresses">
-          <li><strong data-pl="ŁÓDŹ">ЛОДЗЬ</strong><a lang="pl" href="https://www.google.com/maps/search/?api=1&amp;query=93-120%20%C5%81%C3%B3d%C5%BA%2C%20ul.%20Przybyszewskiego%20176%2F178%2C%20Polska">93-120 Łódź, ul. Przybyszewskiego 176/178</a></li>
-          <li><strong data-pl="SOSNOWIEC">СОСНОВЕЦ</strong><a lang="pl" href="https://www.google.com/maps/search/?api=1&amp;query=41-219%20Sosnowiec%2C%20ul.%20Kosynier%C3%B3w%2034%2C%20Polska">41-219 Sosnowiec, ul. Kosynierów 34</a></li>
+          <li><strong data-pl="ŁÓDŹ">ЛОДЗЬ</strong><span lang="pl">93-120 Łódź, ul. Przybyszewskiego 176/178</span><a class="store-route" data-store-city="lodz" href="https://www.google.com/maps/dir/?api=1&amp;destination=93-120%20%C5%81%C3%B3d%C5%BA%2C%20ul.%20Przybyszewskiego%20176%2F178%2C%20Polska" aria-label="Прокласти маршрут до магазину в Лодзі" data-pl-aria="Wyznacz trasę do sklepu w Łodzi"><span data-pl="Wyznacz trasę">Прокласти маршрут</span></a></li>
+          <li><strong data-pl="SOSNOWIEC">СОСНОВЕЦ</strong><span lang="pl">41-219 Sosnowiec, ul. Kosynierów 34</span><a class="store-route" data-store-city="sosnowiec" href="https://www.google.com/maps/dir/?api=1&amp;destination=41-219%20Sosnowiec%2C%20ul.%20Kosynier%C3%B3w%2034%2C%20Polska" aria-label="Прокласти маршрут до магазину в Сосновці" data-pl-aria="Wyznacz trasę do sklepu w Sosnowcu"><span data-pl="Wyznacz trasę">Прокласти маршрут</span></a></li>
         </ul>
         <div id="store-locator" hidden><label for="store-search" data-pl="Miasto, sklep lub adres">Місто, магазин або адреса</label><input type="search" id="store-search" aria-controls="store-results"><div id="store-results" role="status" aria-live="polite"></div></div>
       </div>

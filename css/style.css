@@ -153,6 +153,12 @@ h1 em, .serving h2 em { font-family: var(--serif); font-weight: 400; font-style:
 h1 em { margin-top: .06em; color: var(--gold); font-size: .96em; }
 .hero-desc { max-width: 27rem; margin: 1.6rem 0; font-size: clamp(1rem, 1.25vw, 1.18rem); }
 .primary { display: inline-flex; gap: .6rem; min-height: 3.15rem; align-items: center; justify-content: center; padding: .75rem 1.55rem; background: var(--paper); color: var(--wine); text-decoration: none; border-radius: .25rem; font-weight: 700; }
+.hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: .25rem 1.25rem; }
+.hero-stores, .product-store-link, .store-route { display: inline-flex; align-items: center; min-height: 2.75rem; font-weight: 700; text-underline-offset: .25em; }
+.hero-stores { color: var(--paper); }
+.hero-stores:hover { color: var(--gold); }
+.product-store-link, .store-route { color: var(--wine); }
+.pack-hint { max-width: 38ch; margin-bottom: .4rem; }
 .primary:hover { background: var(--gold); }
 .photo-caption, .table-photo figcaption { position: absolute; bottom: .85rem; right: var(--gutter); color: white; background: #2d1719c9; border-radius: 1rem; padding: .18rem .65rem; font-size: .8rem; }
 .hero .photo-caption { bottom: calc(var(--ribbon-overlap) + .85rem); }
@@ -345,6 +351,7 @@ h2 { font: 500 clamp(2.5rem, 4.4vw, 4.8rem)/1.12 var(--display); letter-spacing:
 .store-addresses { list-style: none; margin: 0; padding: 0; }
 .store-addresses li + li { margin-top: 1.25rem; }
 .store-addresses strong { display: block; margin-bottom: .2rem; color: var(--wine); letter-spacing: .05em; }
+.store-addresses li > span { display: block; }
 .store-addresses a { text-underline-offset: .22em; text-decoration-color: var(--line); }
 .store-addresses a:hover { text-decoration-color: var(--wine); }
 @media (prefers-reduced-motion: no-preference) {

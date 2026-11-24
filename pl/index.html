@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#491320">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Kiełbasy, parówki i przekąski Darnytskie. Zobacz produkty i znajdź adresy sklepów w Łodzi i Sosnowcu.">
+  <meta property="og:title" content="Darnytskie Wyroby — do stołu!">
+  <meta property="og:description" content="Kiełbasy, parówki i przekąski Darnytskie. Zobacz produkty i znajdź adresy sklepów w Łodzi i Sosnowcu.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://pavlo-bondarchuk.github.io/darnytskie_pl/assets/lifestyle/hero.webp?v=rounds">
+  <title>Darnytskie Wyroby — do stołu!</title>
+  <link rel="icon" href="../assets/logo/logo.svg?v=burgundy-gold" type="image/svg+xml">
+  <link rel="preload" as="image" href="../assets/logo/logo.svg?v=burgundy-gold">
+  <link rel="preload" as="image" href="../assets/lifestyle/velvet.webp">
+  <link rel="stylesheet" href="../css/style.css?v=store-journey-1">
+  <script>
+    (() => {
+      const root = document.documentElement;
+      root.classList.add("scroll-header");
+      const motion = matchMedia("(prefers-reduced-motion: reduce)");
+      if (motion.matches) return;
+      const ready = () => {
+        root.classList.remove("intro-pending");
+        document.dispatchEvent(new Event("darnytskie:ready"));
+      };
+      const finish = () => {
+        if (!root.classList.contains("intro-active")) return;
+        root.classList.remove("intro-active");
+        const overlay = document.querySelector(".page-intro");
+        const complete = () => {
+          if (!root.classList.contains("intro-pending")) return;
+          overlay?.removeEventListener("transitionend", onEnd);
+          ready();
+        };
+        const onEnd = event => {
+          if (event.target === overlay && event.propertyName === "opacity") complete();
+        };
+        overlay?.addEventListener("transitionend", onEnd);
+        setTimeout(complete, 500);
+      };
+      root.classList.add("intro-active", "intro-pending");
+      const deadline = setTimeout(finish, 2300);
+      const shine = new Promise(resolve => setTimeout(resolve, 1150));
+      document.addEventListener("DOMContentLoaded", () => {
+        const images = [document.querySelector(".intro-mark img"), document.querySelector(".hero-image")];
+        Promise.allSettled([shine, ...images.map(image => image?.decode?.())]).then(() => {
+          clearTimeout(deadline);
+          finish();
+        });
+      }, { once: true });
+      window.addEventListener("pageshow", event => { if (event.persisted) finish(); });
+      document.addEventListener("focusin", finish, { once: true });
+    })();
+  </script>
+  <script defer src="../js/i18n.js?v=store-journey-1"></script>
+  <script defer src="../js/analytics.js?v=store-journey-1"></script>
+  <script defer src="../js/products.js?v=store-journey-1"></script>
+  <script defer src="../js/stores.js?v=store-journey-1"></script>
+  <script defer src="../js/scroll-motion.js?v=store-journey-1"></script>
+  <script defer src="../js/main.js?v=store-journey-1"></script>
+</head>
+<body>
+  <div class="page-intro" aria-hidden="true">
+    <div class="intro-mark"><img src="../assets/logo/logo.svg?v=burgundy-gold" width="274" height="146" alt=""></div>
+  </div>
+  <a class="skip-link" href="#main" data-pl="Przejdź do treści" data-uk="Перейти до вмісту">Przejdź do treści</a>
+  <header class="site-header" id="site-header">
+    <div class="mast wrap">
+      <a class="brand" href="#start"><img src="../assets/logo/logo.svg?v=burgundy-gold" width="274" height="146" alt="Darnytskie Wyroby" data-pl-alt="Darnytskie Wyroby" data-uk-alt="Дарницькі вироби"></a>
+      <nav class="desktop-nav" aria-label="Nawigacja główna" data-pl-aria="Nawigacja główna" data-uk-aria="Основна навігація">
+        <a href="#produkty" data-pl="Produkty" data-uk="Продукти">Produkty</a><a href="#inspiracje" data-pl="Pomysły na stół" data-uk="Ідеї до столу">Pomysły na stół</a><a href="#gdzie-kupic" data-store-source="navigation" data-pl="Gdzie kupić" data-uk="Де купити">Gdzie kupić</a>
+      </nav>
+      <div class="header-tools">
+        <div class="languages" role="group" aria-label="Język" data-pl-aria="Język" data-uk-aria="Мова"><button type="button" lang="uk" data-language="uk" aria-pressed="false" aria-label="Українська">УКР</button><button type="button" lang="pl" data-language="pl" aria-pressed="true" aria-label="Polski">PL</button></div>
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Otwórz menu" data-pl-aria="Otwórz menu" aria-controls="mobile-menu" aria-expanded="false" data-uk-aria="Відкрити меню"><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+  <dialog class="mobile-menu" id="mobile-menu" aria-label="Menu" data-pl-aria="Menu" data-uk-aria="Меню">
+    <button class="menu-close" id="menu-close" aria-label="Zamknij menu" data-pl-aria="Zamknij menu" data-uk-aria="Закрити меню">×</button>
+    <nav class="mobile-menu__nav"><a href="#produkty" data-pl="Produkty" data-uk="Продукти">Produkty</a><a href="#inspiracje" data-pl="Pomysły na stół" data-uk="Ідеї до столу">Pomysły na stół</a><a href="#gdzie-kupic" data-store-source="navigation" data-pl="Gdzie kupić" data-uk="Де купити">Gdzie kupić</a></nav>
+  </dialog>
+  <main id="main" tabindex="-1">
+    <section id="start" class="hero" aria-labelledby="hero-title">
+      <img class="hero-image" src="../assets/lifestyle/plate.webp" srcset="../assets/lifestyle/plate-768.webp 768w, ../assets/lifestyle/plate.webp 1254w" sizes="(max-width: 680px) 92vw, 57vw" alt="" fetchpriority="high" width="1254" height="1254">
+      <div class="hero-inner wrap">
+        <div class="hero-copy">
+          <p class="eyebrow hero-eyebrow"><span class="rule"></span><span data-pl="Ukraińskie smaki" data-uk="Українські смаки">Ukraińskie smaki</span></p>
+          <h1 id="hero-title"><span data-pl="Smak," data-uk="Смак,">Smak,</span> <em data-pl="który łączy." data-uk="що об’єднує.">który łączy.</em></h1>
+          <p class="hero-desc" data-pl="Kilka plasterków na kanapkę, parówki na śniadanie albo przekąska dla gości. Co dziś podasz na stół?" data-uk="Кілька скибок на бутерброд, сосиски до сніданку чи закуска для гостей. Що сьогодні на вашому столі?">Kilka plasterków na kanapkę, parówki na śniadanie albo przekąska dla gości. Co dziś podasz na stół?</p>
+          <div class="hero-actions">
+            <a class="primary" href="#produkty">
+            <span data-pl="Zobacz produkty" data-uk="Переглянути продукти">Zobacz produkty</span>
+            <svg width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v15m-7-7 7 7 7-7"></path></svg>
+            </a>
+            <a class="hero-stores" href="#gdzie-kupic" data-store-source="hero" data-pl="Sklepy w Polsce" data-uk="Магазини в Польщі">Sklepy w Polsce</a>
+          </div>
+        </div>
+      </div>
+      <span class="photo-caption" data-pl="Propozycja podania" data-uk="Варіант подачі">Propozycja podania</span>
+    </section>
+    <div class="ribbons">
+      <input class="ribbon-pause" type="checkbox" aria-label="Wstrzymaj ruch wstęg" data-pl-aria="Wstrzymaj ruch wstęg" data-uk-aria="Призупинити рух стрічок">
+      <div class="ribbon-bands" aria-hidden="true">
+        <div class="ribbon"><div class="ribbon-track">
+          <div class="ribbon-words">
+            <span data-pl="Śmietankowa" data-uk="Вершкова">Śmietankowa</span>
+            <span data-pl="Doktorska" data-uk="Докторська">Doktorska</span>
+            <span data-pl="Olivier" data-uk="Олів’є">Olivier</span>
+            <span data-pl="Mleczna" data-uk="Молочна">Mleczna</span>
+            <span data-pl="Studencka" data-uk="Студентська">Studencka</span>
+            <span data-pl="Gota" data-uk="Гота">Gota</span>
+          </div>
+          <div class="ribbon-words">
+            <span data-pl="Śmietankowa" data-uk="Вершкова">Śmietankowa</span>
+            <span data-pl="Doktorska" data-uk="Докторська">Doktorska</span>
+            <span data-pl="Olivier" data-uk="Олів’є">Olivier</span>
+            <span data-pl="Mleczna" data-uk="Молочна">Mleczna</span>
+            <span data-pl="Studencka" data-uk="Студентська">Studencka</span>
+            <span data-pl="Gota" data-uk="Гота">Gota</span>
+          </div>
+        </div></div>
+        <div class="ribbon"><div class="ribbon-track">
+          <div class="ribbon-words">
+            <span data-pl="Delikatna" data-uk="Ніжна">Delikatna</span>
+            <span data-pl="Soczysta" data-uk="Соковита">Soczysta</span>
+            <span data-pl="Aromatyczna" data-uk="Ароматна">Aromatyczna</span>
+            <span data-pl="Wyrazista" data-uk="Яскрава">Wyrazista</span>
+            <span data-pl="Smaczna" data-uk="Смачна">Smaczna</span>
+            <span data-pl="Apetyczna" data-uk="Апетитна">Apetyczna</span>
+          </div>
+          <div class="ribbon-words">
+            <span data-pl="Delikatna" data-uk="Ніжна">Delikatna</span>
+            <span data-pl="Soczysta" data-uk="Соковита">Soczysta</span>
+            <span data-pl="Aromatyczna" data-uk="Ароматна">Aromatyczna</span>
+            <span data-pl="Wyrazista" data-uk="Яскрава">Wyrazista</span>
+            <span data-pl="Smaczna" data-uk="Смачна">Smaczna</span>
+            <span data-pl="Apetyczna" data-uk="Апетитна">Apetyczna</span>
+          </div>
+        </div></div>
+      </div>
+    </div>
+    <section id="produkty" class="catalog wrap" aria-labelledby="products-title">
+      <div class="section-intro">
+        <div><p class="eyebrow"><span class="rule"></span><span data-pl="Katalog produktów" data-uk="Каталог продуктів">Katalog produktów</span></p><h2 id="products-title" data-pl="Wybierz coś na stół" data-uk="Оберіть щось до столу">Wybierz coś na stół</h2></div>
+        <p class="intro-note" data-pl="Wybierz produkt i zobacz, z czym podać go na śniadanie lub przekąskę." data-uk="Оберіть продукт і подивіться, з чим його подати на сніданок чи закуску.">Wybierz produkt i zobacz, z czym podać go na śniadanie lub przekąskę.</p>
+      </div>
+      <div class="filters" id="filters" role="group" aria-label="Kategoria produktu" data-pl-aria="Kategoria produktu" data-uk-aria="Категорія продукту">
+        <button type="button" data-filter="all" data-pl="Wszystkie" aria-pressed="true" data-uk="Усі">Wszystkie</button><button type="button" data-filter="Kiełbasa" data-pl="Kiełbasy" aria-pressed="false" data-uk="Ковбаси">Kiełbasy</button><button type="button" data-filter="Parówki" data-pl="Parówki" aria-pressed="false" data-uk="Сосиски">Parówki</button><button type="button" data-filter="Przekąska" data-pl="Przekąski" aria-pressed="false" data-uk="Закуски">Przekąski</button>
+      </div>
+      <div class="product-grid" id="product-grid" role="group" aria-labelledby="products-title"></div>
+      <noscript><p data-pl="Śmietankowa · Doktorska · Studencka · Gota · Doktorska Premium · Doktorska Extra · Wędzone uszy wieprzowe · Parówki Doktorskie · Mleczna · Olivier" data-uk="Вершкова · Докторська · Студентська · Гота · Докторська Преміум · Докторська Екстра · Копчені свинячі вуха · Сосиски Докторські · Молочна · Олів’є">Śmietankowa · Doktorska · Studencka · Gota · Doktorska Premium · Doktorska Extra · Wędzone uszy wieprzowe · Parówki Doktorskie · Mleczna · Olivier</p></noscript>
+      <p class="catalog-foot" data-pl="Wizualizacje AI przedstawiają propozycje podania. Skład, alergeny i sposób przechowywania sprawdź na opakowaniu wybranego produktu." data-uk="ШІ-ілюстрації показують варіанти подачі. Склад, алергени та умови зберігання перевіряйте на пакованні обраного продукту.">Wizualizacje AI przedstawiają propozycje podania. Skład, alergeny i sposób przechowywania sprawdź na opakowaniu wybranego produktu.</p>
+    </section>
+    <section id="inspiracje" class="serving" aria-labelledby="serving-title">
+      <div class="serving-layout">
+        <figure class="table-photo">
+          <img id="dish-sandwich" class="is-current" src="../assets/lifestyle/table.webp" srcset="../assets/lifestyle/table-900.webp 900w, ../assets/lifestyle/table.webp 1536w" sizes="(max-width: 760px) 100vw, 50vw" width="1536" height="1024" alt="Kanapki na żytnim chlebie z kiełbasą Śmietankową, ogórkiem i koperkiem" data-pl-alt="Kanapki na żytnim chlebie z kiełbasą Śmietankową, ogórkiem i koperkiem" loading="lazy" data-uk-alt="Бутерброди з Вершковою ковбасою, огірком і кропом на житньому хлібі">
+          <img id="dish-skillet" src="../assets/lifestyle/serving-skillet.webp" width="1120" height="1120" alt="Parówki z jajkiem sadzonym, szczypiorkiem i żytnią grzanką na patelni" data-pl-alt="Parówki z jajkiem sadzonym, szczypiorkiem i żytnią grzanką na patelni" loading="lazy" aria-hidden="true" data-uk-alt="Підрум’янені сосиски з яєчнею, зеленою цибулею та житнім тостом на пательні">
+          <img id="dish-platter" src="../assets/lifestyle/serving-platter.webp" width="1120" height="1120" alt="Paski wędzonych uszu wieprzowych z marynowaną cebulką, ogórkami i chrzanem" data-pl-alt="Paski wędzonych uszu wieprzowych z marynowaną cebulką, ogórkami i chrzanem" loading="lazy" aria-hidden="true" data-uk-alt="Смужки копчених свинячих вух з маринованою цибулею, огірками та хроном">
+          <figcaption data-pl="Propozycja podania" data-uk="Варіант подачі">Propozycja podania</figcaption>
+        </figure>
+        <div class="serving-copy" id="o-nas">
+          <p class="eyebrow"><span class="rule"></span><span data-pl="Przy stole z Darnytskie" data-uk="До столу з Дарницькими">Przy stole z Darnytskie</span></p>
+          <h2 id="serving-title"><span data-pl="Co dziś" data-uk="Що сьогодні">Co dziś</span> <em data-pl="podajemy?" data-uk="подаємо?">podajemy?</em></h2>
+          <p data-pl="W ukraińskiej kuchni dla jeszcze jednej osoby zawsze znajdzie się kromka chleba. Oto trzy pomysły na to, co na niej położyć albo podać obok." data-uk="На українському столі завжди знайдеться скибка хліба для когось іще. Ось три ідеї, що покласти на неї або подати поруч.">W ukraińskiej kuchni dla jeszcze jednej osoby zawsze znajdzie się kromka chleba. Oto trzy pomysły na to, co na niej położyć albo podać obok.</p>
+          <div class="ideas">
+            <details name="serving-ideas" data-photo="dish-sandwich" open><summary data-pl="Kanapka z chrupiącym ogórkiem" data-uk="Бутерброд із хрумким огірком">Kanapka z chrupiącym ogórkiem</summary><div><p data-pl="Posmaruj żytni chleb musztardą. Dodaj plasterki Śmietankowej, kiszony ogórek i kilka gałązek koperku." data-uk="Змастіть житній хліб гірчицею. Додайте скибки Вершкової, солоний огірок і кілька гілочок кропу.">Posmaruj żytni chleb musztardą. Dodaj plasterki Śmietankowej, kiszony ogórek i kilka gałązek koperku.</p><button type="button" data-show-product="vershkova" data-pl="Zobacz Śmietankową" data-uk="Переглянути Вершкову">Zobacz Śmietankową</button></div></details>
+            <details name="serving-ideas" data-photo="dish-skillet"><summary data-pl="Śniadanie prosto z patelni" data-uk="Сніданок просто з пательні">Śniadanie prosto z patelni</summary><div><p data-pl="Przygotuj parówki zgodnie z instrukcją na opakowaniu. Podaj z jajkiem sadzonym, szczypiorkiem i ciepłą grzanką." data-uk="Приготуйте сосиски за інструкцією на пакованні. Подайте з яєчнею, зеленою цибулею та теплим тостом.">Przygotuj parówki zgodnie z instrukcją na opakowaniu. Podaj z jajkiem sadzonym, szczypiorkiem i ciepłą grzanką.</p><button type="button" data-show-product="parowki" data-pl="Zobacz Parówki Doktorskie" data-uk="Переглянути сосиски Докторські">Zobacz Parówki Doktorskie</button></div></details>
+            <details name="serving-ideas" data-photo="dish-platter"><summary data-pl="Na półmisku dla gości" data-uk="Закуска на спільній тарілці">Na półmisku dla gości</summary><div><p data-pl="Do wędzonych uszu wieprzowych podaj marynowaną cebulkę, ogórki i chrzan w małej miseczce. Pieczywo połóż obok, żeby każdy mógł sięgnąć po kromkę." data-uk="До копчених свинячих вух подайте мариновану цибульку, огірки й хрін у невеликій мисці. Хліб поставте поруч, щоб кожен міг узяти скибку.">Do wędzonych uszu wieprzowych podaj marynowaną cebulkę, ogórki i chrzan w małej miseczce. Pieczywo połóż obok, żeby każdy mógł sięgnąć po kromkę.</p><button type="button" data-show-product="uszka-wedzone" data-pl="Zobacz wędzone uszy wieprzowe" data-uk="Переглянути копчені вуха">Zobacz wędzone uszy wieprzowe</button></div></details>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="gdzie-kupic" class="availability wrap" aria-labelledby="locator-title">
+      <div><p class="eyebrow"><span class="rule"></span><span data-pl="W Polsce" data-uk="У Польщі">W Polsce</span></p><h2 id="locator-title" data-pl="Gdzie kupić?" data-uk="Де купити?">Gdzie kupić?</h2></div>
+      <div class="locator-mark" aria-hidden="true"><img src="../assets/logo/logo.svg?v=burgundy-gold" width="274" height="146" alt=""></div>
+      <div class="locator-panel">
+        <ul id="store-addresses" class="store-addresses">
+          <li><strong data-pl="ŁÓDŹ" data-uk="ЛОДЗЬ">ŁÓDŹ</strong><span lang="pl">93-120 Łódź, ul. Przybyszewskiego 176/178</span><a class="store-route" data-store-city="lodz" href="https://www.google.com/maps/dir/?api=1&amp;destination=93-120%20%C5%81%C3%B3d%C5%BA%2C%20ul.%20Przybyszewskiego%20176%2F178%2C%20Polska" aria-label="Wyznacz trasę do sklepu w Łodzi" data-pl-aria="Wyznacz trasę do sklepu w Łodzi" data-uk-aria="Прокласти маршрут до магазину в Лодзі"><span data-pl="Wyznacz trasę" data-uk="Прокласти маршрут">Wyznacz trasę</span></a></li>
+          <li><strong data-pl="SOSNOWIEC" data-uk="СОСНОВЕЦ">SOSNOWIEC</strong><span lang="pl">41-219 Sosnowiec, ul. Kosynierów 34</span><a class="store-route" data-store-city="sosnowiec" href="https://www.google.com/maps/dir/?api=1&amp;destination=41-219%20Sosnowiec%2C%20ul.%20Kosynier%C3%B3w%2034%2C%20Polska" aria-label="Wyznacz trasę do sklepu w Sosnowcu" data-pl-aria="Wyznacz trasę do sklepu w Sosnowcu" data-uk-aria="Прокласти маршрут до магазину в Сосновці"><span data-pl="Wyznacz trasę" data-uk="Прокласти маршрут">Wyznacz trasę</span></a></li>
+        </ul>
+        <div id="store-locator" hidden><label for="store-search" data-pl="Miasto, sklep lub adres" data-uk="Місто, магазин або адреса">Miasto, sklep lub adres</label><input type="search" id="store-search" aria-controls="store-results"><div id="store-results" role="status" aria-live="polite"></div></div>
+      </div>
+    </section>
+  </main>
+  <footer id="kontakt"><div class="wrap footer-inner"><a class="brand" href="#start"><img src="../assets/logo/logo.svg?v=burgundy-gold" width="274" height="146" alt="Darnytskie Wyroby" data-pl-alt="Darnytskie Wyroby" data-uk-alt="Дарницькі вироби"></a><span data-pl="© 2026 Darnytskie Wyroby" data-uk="© 2026 Дарницькі вироби">© 2026 Darnytskie Wyroby</span></div></footer>
+  <a id="back-to-top" class="back-to-top" href="#start" aria-label="Na początek strony" data-pl-aria="Na początek strony" inert data-uk-aria="На початок сторінки">
+    <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5m-7 7 7-7 7 7"></path></svg>
+  </a>
+</body>
+</html>

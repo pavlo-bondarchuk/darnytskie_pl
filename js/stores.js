@@ -16,9 +16,12 @@
       const title = document.createElement("strong");
       title.textContent = store.name;
       const link = document.createElement("a");
-      link.href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(address);
-      link.textContent = address;
-      row.append(title, document.createElement("br"), link);
+      link.href = "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(address + ", Polska");
+      link.dataset.storeCity = normalize(store.city);
+      link.className = "store-route";
+      link.textContent = polish ? "Wyznacz trasę" : "Прокласти маршрут";
+      link.setAttribute("aria-label", link.textContent + " — " + store.name + ", " + store.city);
+      row.append(title, document.createElement("br"), address, document.createElement("br"), link);
       results.append(row);
     }
     if (!results.childElementCount) results.textContent = polish ? "Brak wyników. Spróbuj innej nazwy lub miejscowości." : "Збігів немає. Спробуйте іншу назву чи місто.";

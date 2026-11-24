@@ -1,4 +1,5 @@
 (() => {
+  const siteRoot = window.DarnytskieI18n.siteRoot;
   const products = [
     {
       id: "vershkova",
@@ -17,6 +18,8 @@
       category: "Kiełbasa",
       color: "#f2d8cc",
       label: "assets/labels/sausage-doctor-classic.webp",
+      packHint: "Шукайте рожеву стрічку з написом «Докторська».",
+      packHintPl: "Szukaj różowej wstęgi z napisem „Докторська”.",
       description: "До тонких скибочок подайте житній хліб і трохи гірчиці.",
       descriptionPl: "Do cienkich plastrów podaj chleb żytni i odrobinę musztardy."
     },
@@ -48,6 +51,8 @@
       category: "Kiełbasa",
       color: "#d4ddbf",
       label: "assets/labels/sausage-doctor-premium.webp",
+      packHint: "Під рожевою стрічкою на етикетці є напис «Преміум».",
+      packHintPl: "Pod różową wstęgą na etykiecie widnieje napis „Преміум”.",
       description: "Викладіть тонкі скибочки складками на багет із маслом і додайте корнішони.",
       descriptionPl: "Złóż cienkie plastry na bagietce z masłem i dodaj korniszony."
     },
@@ -58,6 +63,8 @@
       category: "Kiełbasa",
       color: "#c8dce3",
       label: "assets/labels/sausage-doctor-extra.webp",
+      packHint: "Під рожевою стрічкою на етикетці є напис «Екстра».",
+      packHintPl: "Pod różową wstęgą na etykiecie widnieje napis „Екстра”.",
       description: "Підсмажте сендвіч із ковбасою, сиром і помідором. Розріжте навскіс і подавайте гарячим.",
       descriptionPl: "Zapiecz w kanapce z serem i pomidorem. Przekrój po skosie i podaj na gorąco."
     },
@@ -388,7 +395,7 @@
     picture.className = "product-card__image";
     const servingImage = document.createElement("img");
     servingImage.className = "serving-art";
-    servingImage.src = `assets/products/serving/${product.id}.webp`;
+    servingImage.src = new URL(`assets/products/serving/${product.id}.webp`, siteRoot).href;
     servingImage.alt = "";
     servingImage.loading = "lazy";
     servingImage.decoding = "async";
@@ -415,6 +422,11 @@
     const caption = dualText("p", "detail-label", "Як подати", "Jak podać");
     const description = dualText("p", "detail-copy", product.description, product.descriptionPl);
     details.append(caption, description);
+    if (product.packHint) details.append(dualText("p", "pack-hint", product.packHint, product.packHintPl));
+    const storeLink = dualText("a", "product-store-link", "Де купити", "Gdzie kupić");
+    storeLink.href = "#gdzie-kupic";
+    storeLink.dataset.storeSource = "product";
+    details.append(storeLink);
     const closeButton = dualText("button", "product-card__close", "Закрити", "Zamknij");
     closeButton.type = "button";
     closeButton.hidden = true;
