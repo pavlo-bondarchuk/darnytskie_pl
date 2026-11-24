@@ -35,3 +35,5 @@ The supplied Drive folder has no font package or verified product cutouts. The p
 - Editorial and lifestyle photography: approved table, serving, sandwich, and snack scenes in both landscape 3:2 and portrait 4:5 crops.
 - Open Graph preview: approved brand/product image composed at 1200 × 630 px.
 - Confirmed Ukrainian and Polish product names, descriptions, product characteristics, and current availability or verified shop addresses before replacing prototype placeholders with factual claims. The interface is Ukrainian by default and includes a Polish language switch.
+
+The ten WebP files in `assets/products/packs/` are generated packaging visualizations, one per catalog product ID. Each was generated with that product’s original label artwork as the reference. The comparison of the three Doktorska labels uses the original label previews directly.

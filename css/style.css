@@ -313,6 +313,26 @@ h2 { font: 500 clamp(2.5rem, 4.4vw, 4.8rem)/1.12 var(--display); letter-spacing:
 .product-card.is-expanded .product-card__bottom { grid-area: 1/2; padding: 4rem clamp(1.25rem,4vw,4rem) 1.5rem; }
 .product-card__details { grid-area: 2/2; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; padding: 0 clamp(1.25rem,4vw,4rem) 1rem; overflow: auto; }
 .detail-copy { margin: .6rem 0 1.5rem; max-width: 34ch; font-size: clamp(1rem,1.55vw,1.45rem); }
+.pack-art, .product-views { display: none; }
+.product-card.is-expanded .product-views { position: absolute; bottom: .65rem; justify-self: center; display: inline-flex; padding: .2rem; border: 1px solid var(--line); border-radius: 2rem; background: var(--paper); }
+.product-views button { min-height: 2.75rem; border: 0; background: transparent; color: var(--wine); border-radius: inherit; padding: .4rem .9rem; font-weight: 700; }
+.product-views button[aria-pressed="true"] { background: var(--wine); color: white; }
+.product-card.is-expanded.shows-pack .product-card__image { background: #f4eee3; }
+.product-card.is-expanded.shows-pack .serving-art { display: none; }
+.product-card.is-expanded.shows-pack .pack-art { display: block; position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.compare-labels { display: inline-flex; align-items: center; min-height: 2.75rem; color: var(--wine); text-underline-offset: .2em; }
+.shelf-guide { background: #fffdf8; border-bottom: 1px solid var(--line); }
+.shelf-layout { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 6fr); align-items: center; gap: clamp(2rem, 6vw, 6rem); padding-block: clamp(3rem, 6vw, 6rem); }
+.shelf-intro p { margin-top: 1.2rem; max-width: 42ch; }
+.shelf-labels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.shelf-labels figure { text-align: center; }
+.shelf-labels img { width: 100%; height: clamp(7rem, 14vw, 14rem); object-fit: contain; mix-blend-mode: multiply; }
+.shelf-labels figcaption { margin-top: .75rem; color: var(--wine); font-weight: 700; }
+@media (max-width: 48rem) {
+  .shelf-layout { grid-template-columns: 1fr; }
+  .shelf-labels { gap: .4rem; }
+  .shelf-labels figcaption { font-size: .875rem; }
+}
 .product-card__close, .menu-close { border: 1px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 2rem; min-height: 2.75rem; }
 .product-card__close { position: absolute; z-index: 4; right: .7rem; top: .7rem; padding: .45rem 1rem; }
 .product-card__close:hover { color: white; background: var(--wine); }
@@ -455,7 +475,7 @@ footer span { font-size: .875rem; }
   .product-card.is-expanded { grid-template-columns: 1fr; grid-template-rows: auto minmax(0,1fr) auto; }
   .product-card.is-expanded .product-card__bottom { grid-area: 1/1; padding: .8rem 6.75rem .8rem 1.15rem; }
   .product-card.is-expanded .product-card__image { grid-area: 2/1; }
-  .product-card__details { grid-area: 3/1; padding: 1rem 1.15rem; }
+  .product-card__details { grid-area: 3/1; padding: 1rem 1.15rem; max-height: 45vh; }
   .detail-copy { margin: .25rem 0 .6rem; }
 }
 @media (prefers-reduced-motion: reduce) {

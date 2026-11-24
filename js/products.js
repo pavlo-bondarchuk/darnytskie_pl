@@ -213,6 +213,7 @@
         if (previous) card.style.setProperty(property, previous.value, previous.priority);
         else card.style.removeProperty(property);
       }
+      if (card.classList.contains("shows-pack")) card.querySelector(".view-serving").click();
       card.classList.remove("is-expanded", "is-muted");
       card.inert = false;
       card.removeAttribute("aria-hidden");
@@ -399,7 +400,29 @@
     servingImage.alt = "";
     servingImage.loading = "lazy";
     servingImage.decoding = "async";
-    picture.append(servingImage);
+    const pack = document.createElement("img");
+    pack.className = "pack-art";
+    pack.alt = "Візуалізація паковання — " + product.originalName;
+    pack.dataset.plAlt = "Wizualizacja opakowania — " + product.name;
+    const views = document.createElement("div");
+    views.className = "product-views";
+    views.setAttribute("role", "group");
+    views.setAttribute("aria-label", "Зображення продукту");
+    views.dataset.plAria = "Widok produktu";
+    const servingButton = dualText("button", "view-serving", "На столі", "Na stole");
+    const packButton = dualText("button", "view-pack", "У пакованні", "W opakowaniu");
+    const setView = showPack => {
+      if (showPack && !pack.hasAttribute("src")) pack.src = new URL(`assets/products/packs/${product.id}.webp`, siteRoot).href;
+      card.classList.toggle("shows-pack", showPack);
+      servingButton.setAttribute("aria-pressed", String(!showPack));
+      packButton.setAttribute("aria-pressed", String(showPack));
+    };
+    servingButton.type = packButton.type = "button";
+    servingButton.addEventListener("click", () => setView(false));
+    packButton.addEventListener("click", () => setView(true));
+    setView(false);
+    views.append(servingButton, packButton);
+    picture.append(servingImage, pack, views);
 
     const bottom = document.createElement("div");
     bottom.className = "product-card__bottom";
@@ -422,7 +445,11 @@
     const caption = dualText("p", "detail-label", "Як подати", "Jak podać");
     const description = dualText("p", "detail-copy", product.description, product.descriptionPl);
     details.append(caption, description);
-    if (product.packHint) details.append(dualText("p", "pack-hint", product.packHint, product.packHintPl));
+    if (product.packHint) {
+      const compare = dualText("a", "compare-labels", "Порівняти три етикетки", "Porównaj trzy etykiety");
+      compare.href = "#etykiety";
+      details.append(dualText("p", "pack-hint", product.packHint, product.packHintPl), compare);
+    }
     const storeLink = dualText("a", "product-store-link", "Де купити", "Gdzie kupić");
     storeLink.href = "#gdzie-kupic";
     storeLink.dataset.storeSource = "product";

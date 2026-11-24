@@ -34,3 +34,9 @@ undefined
 - **parowki** — СОСИСКИ ДОКТОРСЬКІ. two glossy browned slender frankfurters in a split brioche roll, bright mustard stripe, fresh green relish, sunny golden counter. Behind it a transparent vacuum pack of slender frankfurters wearing provided label
 - **molochna** — МОЛОЧНА. breakfast on powder blue ceramic, thick round of milk sausage just browned at edges beside a sunny-side egg, dill, torn toast
 - **olivye** — ОЛІВ’Є. spoonful of Olivier salad above green ceramic bowl with visible cubes of pink cooked sausage, peas, potato, carrot, mayonnaise and dill; a few freshly cut sausage cubes in foreground
+
+## Catalog packaging, ten products
+
+Generate one square product photograph per catalog ID with the built-in image generator. Use the matching print label from the product record as the artwork reference. Show one whole sealed retail pack on an ivory studio surface, with soft light from the upper left and a contact shadow. Keep the label legible, retain the burgundy gate logo, colors and lettering. Apply rectangular artwork as a sleeve and oval artwork as a die-cut label. Frame the entire pack, with no garnish, additional products, invented weights or certifications.
+
+For sausages, show an intact cylindrical loaf with gathered crimped ends. For Parówki Doktorskie use a transparent pack of six aligned frankfurters. For the smoked ears use a clear vacuum pouch of curled amber strips. The individual products are identified by their label references in the catalog. Export to `assets/products/packs/<product-id>.webp`.
